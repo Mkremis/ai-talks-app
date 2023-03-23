@@ -1,10 +1,10 @@
 import Speech from 'speak-tts';
 import { useState, useEffect } from 'react';
-
+const loader = 'aguarda un momento por favor..';
 const useTextToSpeech = (response, setResponse, setPrompt, query, setQuery) => {
   const [speaking, setSpeaking] = useState(false);
   const [loading, setLoading] = useState(false);
-  const loader = 'aguarda un momento por favor..';
+  const [text, setText] = useState('');
 
   //Check for browser support :
   const speech = new Speech(); // will throw an exception if not browser supported
@@ -32,29 +32,35 @@ const useTextToSpeech = (response, setResponse, setPrompt, query, setQuery) => {
 
   //loader activation
   useEffect(() => {
-    if (query && !response) setLoading(true);
+    if (query && !response) {
+      setLoading(true);
+      setText(loader);
+    }
   }, [query, response, setLoading]);
 
   useEffect(() => {
     if (response) {
       setLoading(false);
+      setText(response);
+    }
+  }, [response, setLoading]);
 
+  useEffect(() => {
+    if (text) {
       speech
         .speak({
-          text: response,
-          queue: false,
+          text: text,
+          queue: true,
           listeners: {
             onstart: () => {
               setSpeaking(true);
             },
             onend: () => {
+              setText('');
               setSpeaking(false);
               setResponse('');
               setPrompt('');
               setQuery(null);
-            },
-            onresume: () => {
-              console.log('Resume utterance');
             },
           },
         })
@@ -65,7 +71,7 @@ const useTextToSpeech = (response, setResponse, setPrompt, query, setQuery) => {
           console.error('An error occurred :', e);
         });
     }
-  }, [response, loading, setLoading]);
+  }, [text, setText, setSpeaking, setResponse, setPrompt, setQuery]);
 
   useEffect(() => {
     if (speaking) {

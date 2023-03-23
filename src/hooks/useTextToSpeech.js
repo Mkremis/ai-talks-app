@@ -33,21 +33,10 @@ const useTextToSpeech = (response, setResponse, setPrompt, query, setQuery) => {
     }
   }, [response, setLoading]);
 
-  // useEffect(() => {
-  //   if (speaking) {
-  //     let r = setInterval(function () {
-  //       if (!speechSynthesis.speaking) clearInterval(r);
-  //       else {
-  //         speechSynthesis.pause();
-  //         speechSynthesis.resume();
-  //       }
-  //     }, 3000);
-  //   }
-  // }, [speaking]);
-
   const handleStopSpeak = () => {
-    synth.cancel();
+    artyom.shutUp();
     setSpeaking(false);
+    setLoading(false);
     setResponse('');
     setPrompt('');
     setQuery(null);

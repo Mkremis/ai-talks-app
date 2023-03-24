@@ -4,23 +4,30 @@ const loader = 'aguarda un momento por favor';
 const useTextToSpeech = (response, setResponse, setPrompt, query, setQuery) => {
   const [speaking, setSpeaking] = useState(false);
   const [loading, setLoading] = useState(false);
-  const artyom = new Artyom();
-  artyom.initialize({ lang: 'es-ES' });
-  // console.log(artyom.getVoices());
+  const [lang, setLang] = useState('es-US');
 
-  //loader activation
+  const speechService = new Artyom();
+  const voices = speechService.getVoices();
+  console.log(voices);
+  const handleLangChange = (e) => setLang(e.target.value);
+
+  speechService.initialize({ lang, debug: false });
+
+  //loader activation and speak the loader
   useEffect(() => {
     if (query && !response) {
       setLoading(true);
-      artyom.say(loader);
+      speechService.say(loader);
     }
   }, [query, response, setLoading]);
 
+  //speak the response
   useEffect(() => {
     if (response) {
       setLoading(false);
+      //speaker function:
       let sayResponse = () => {
-        artyom.say(response, {
+        speechService.say(response, {
           onStart: () => {
             setSpeaking(true);
           },
@@ -32,6 +39,7 @@ const useTextToSpeech = (response, setResponse, setPrompt, query, setQuery) => {
           },
         });
       };
+      //due Chrome on mobile require an user event prior to able the speech service, this is a simulated user click event:
       let fakeButton = {};
       fakeButton.dispatchEvent = sayResponse;
       let clickEvent = new Event('click');
@@ -40,7 +48,7 @@ const useTextToSpeech = (response, setResponse, setPrompt, query, setQuery) => {
   }, [response, setLoading]);
 
   const handleStopSpeak = () => {
-    artyom.shutUp();
+    speechService.shutUp();
     setSpeaking(false);
     setLoading(false);
     setResponse('');
@@ -48,7 +56,15 @@ const useTextToSpeech = (response, setResponse, setPrompt, query, setQuery) => {
     setQuery(null);
   };
 
-  return [speaking, handleStopSpeak, loader, loading];
+  return [
+    voices,
+    lang,
+    handleLangChange,
+    speaking,
+    handleStopSpeak,
+    loader,
+    loading,
+  ];
 };
 
 export default useTextToSpeech;

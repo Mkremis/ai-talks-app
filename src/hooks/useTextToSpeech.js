@@ -32,7 +32,6 @@ const useTextToSpeech = (
         cancelable: true,
       });
       // fakeButton.dispatchEvent(buttonEvent);
-      console.log(fakeButton);
       buttonEvent.onclick = artyom.say(response, {
         onStart: () => {
           setSpeaking(true);

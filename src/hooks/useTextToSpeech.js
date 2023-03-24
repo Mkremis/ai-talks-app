@@ -1,14 +1,7 @@
 import Artyom from 'artyom.js';
 import { useState, useEffect } from 'react';
 const loader = 'aguarda un momento por favor';
-const useTextToSpeech = (
-  response,
-  setResponse,
-  setPrompt,
-  query,
-  setQuery,
-  fakeButton
-) => {
+const useTextToSpeech = (response, setResponse, setPrompt, query, setQuery) => {
   const [speaking, setSpeaking] = useState(false);
   const [loading, setLoading] = useState(false);
   const artyom = new Artyom();
@@ -26,23 +19,29 @@ const useTextToSpeech = (
   useEffect(() => {
     if (response) {
       setLoading(false);
-      const buttonEvent = new MouseEvent('click', {
+      let sayResponse = () => {
+        artyom.say(response, {
+          onStart: () => {
+            setSpeaking(true);
+          },
+          onEnd: () => {
+            setSpeaking(false);
+            setResponse('');
+            setPrompt('');
+            setQuery(null);
+          },
+        });
+      };
+      let fakeButton = {};
+      let buttonEvent = new MouseEvent('click', {
         view: window,
         bubbles: true,
         cancelable: true,
       });
-      // fakeButton.dispatchEvent(buttonEvent);
-      buttonEvent.onclick = artyom.say(response, {
-        onStart: () => {
-          setSpeaking(true);
-        },
-        onEnd: () => {
-          setSpeaking(false);
-          setResponse('');
-          setPrompt('');
-          setQuery(null);
-        },
-      });
+
+      fakeButton.dispatchEvent = sayResponse;
+      let clickEvent = new Event('click');
+      fakeButton.dispatchEvent(clickEvent);
     }
   }, [response, setLoading]);
 

@@ -25,7 +25,6 @@ function App() {
     setPrompt,
     query,
     setQuery,
-    fakeButton
   );
 
   const [handleStart, mic] = useSpeechToText(setPrompt, setQuery);
@@ -65,7 +64,6 @@ function App() {
           </section>
         </article>
       </div>
-      <button id="fakeButton" hidden={true} />
     </main>
   );
 }

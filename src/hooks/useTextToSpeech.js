@@ -33,12 +33,6 @@ const useTextToSpeech = (response, setResponse, setPrompt, query, setQuery) => {
         });
       };
       let fakeButton = {};
-      let buttonEvent = new MouseEvent('click', {
-        view: window,
-        bubbles: true,
-        cancelable: true,
-      });
-
       fakeButton.dispatchEvent = sayResponse;
       let clickEvent = new Event('click');
       fakeButton.dispatchEvent(clickEvent);

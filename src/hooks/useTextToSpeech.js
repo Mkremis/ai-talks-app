@@ -13,12 +13,8 @@ const useTextToSpeech = (
   const [loading, setLoading] = useState(false);
   const artyom = new Artyom();
   artyom.initialize({ lang: 'es-ES' });
-  console.log(artyom.getVoices());
-  const buttonEvent = new MouseEvent('click', {
-    view: window,
-    bubbles: true,
-    cancelable: true,
-  });
+  // console.log(artyom.getVoices());
+
   //loader activation
   useEffect(() => {
     if (query && !response) {
@@ -30,9 +26,14 @@ const useTextToSpeech = (
   useEffect(() => {
     if (response) {
       setLoading(false);
+      const buttonEvent = new MouseEvent('click', {
+        view: window,
+        bubbles: true,
+        cancelable: true,
+      });
       // fakeButton.dispatchEvent(buttonEvent);
       console.log(fakeButton);
-      fakeButton.onclick = artyom.say(response, {
+      buttonEvent.onclick = artyom.say(response, {
         onStart: () => {
           setSpeaking(true);
         },

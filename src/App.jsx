@@ -7,7 +7,7 @@ import useChat from './hooks/useChat';
 import useSpeechToText from './hooks/useSpeechToText';
 import useTextToSpeech from './hooks/useTextToSpeech';
 import MicButton from './components/MicButton';
-
+const fakeButton = document.getElementById('fakeButton');
 function App() {
   const [
     handleKeyPress,
@@ -24,7 +24,8 @@ function App() {
     setResponse,
     setPrompt,
     query,
-    setQuery
+    setQuery,
+    fakeButton
   );
 
   const [handleStart, mic] = useSpeechToText(setPrompt, setQuery);
@@ -64,6 +65,7 @@ function App() {
           </section>
         </article>
       </div>
+      <button id="fakeButton" hidden={true} />
     </main>
   );
 }

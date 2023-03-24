@@ -7,8 +7,14 @@ import useChat from './hooks/useChat';
 import useSpeechToText from './hooks/useSpeechToText';
 import useTextToSpeech from './hooks/useTextToSpeech';
 import MicButton from './components/MicButton';
+import { useEffect, useState } from 'react';
 
 function App() {
+  const [voices, setVoices] = useState([]);
+  useEffect(() => {
+    setVoices(window.speechSynthesis.getVoices());
+  }, []);
+
   const [
     handleKeyPress,
     prompt,
@@ -19,15 +25,8 @@ function App() {
     setQuery,
     handleChange,
   ] = useChat();
-  const [
-    voices,
-    lang,
-    handleLangChange,
-    speaking,
-    handleStopSpeak,
-    loader,
-    loading,
-  ] = useTextToSpeech(response, setResponse, setPrompt, query, setQuery);
+  const [lang, handleLangChange, speaking, handleStopSpeak, loader, loading] =
+    useTextToSpeech(response, setResponse, setPrompt, query, setQuery);
 
   const [handleStart, mic] = useSpeechToText(setPrompt, setQuery);
 

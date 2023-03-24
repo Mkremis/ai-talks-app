@@ -7,8 +7,6 @@ const useTextToSpeech = (response, setResponse, setPrompt, query, setQuery) => {
   const [lang, setLang] = useState('es-US');
 
   const speechService = new Artyom();
-  const voices = speechService.getVoices();
-  console.log(voices);
   const handleLangChange = (e) => setLang(e.target.value);
 
   speechService.initialize({ lang, debug: false });
@@ -57,7 +55,6 @@ const useTextToSpeech = (response, setResponse, setPrompt, query, setQuery) => {
   };
 
   return [
-    voices,
     lang,
     handleLangChange,
     speaking,

@@ -7,14 +7,9 @@ import useChat from './hooks/useChat';
 import useSpeechToText from './hooks/useSpeechToText';
 import useTextToSpeech from './hooks/useTextToSpeech';
 import MicButton from './components/MicButton';
-import { useEffect, useState } from 'react';
+import Menu from './components/Menu';
 
 function App() {
-  const [voices, setVoices] = useState([]);
-  useEffect(() => {
-    setVoices(window.speechSynthesis.getVoices());
-  }, []);
-
   const [
     handleKeyPress,
     prompt,
@@ -25,8 +20,15 @@ function App() {
     setQuery,
     handleChange,
   ] = useChat();
-  const [lang, handleLangChange, speaking, handleStopSpeak, loader, loading] =
-    useTextToSpeech(response, setResponse, setPrompt, query, setQuery);
+  const [
+    voices,
+    lang,
+    handleLangChange,
+    speaking,
+    handleStopSpeak,
+    loader,
+    loading,
+  ] = useTextToSpeech(response, setResponse, setPrompt, query, setQuery);
 
   const [handleStart, mic] = useSpeechToText(setPrompt, setQuery);
 
@@ -35,24 +37,7 @@ function App() {
       <header className="header">
         <h1>AI Talks</h1>
       </header>
-      <aside className="menu">
-        <select
-          name="voices"
-          id="voices"
-          className="voices"
-          value={lang}
-          onChange={handleLangChange}
-        >
-          {voices.length > 0 &&
-            voices.map((voice, i) => {
-              return (
-                <option key={i} value={voice.lang}>
-                  {voice.name}
-                </option>
-              );
-            })}
-        </select>
-      </aside>
+      <Menu voices={voices} lang={lang} handleLangChange={handleLangChange} />
       <div className="content">
         <article className="content-response">
           <section className="content-response__avatar">

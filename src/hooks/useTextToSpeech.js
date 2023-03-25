@@ -4,9 +4,11 @@ const loader = 'aguarda un momento por favor';
 const useTextToSpeech = (response, setResponse, setPrompt, query, setQuery) => {
   const [speaking, setSpeaking] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [lang, setLang] = useState('es-US');
+  const [lang, setLang] = useState('es-ES');
 
   const speechService = new Artyom();
+  const voices = speechService.getVoices();
+  console.log(voices);
   const handleLangChange = (e) => setLang(e.target.value);
 
   speechService.initialize({ lang, debug: false });
@@ -55,6 +57,7 @@ const useTextToSpeech = (response, setResponse, setPrompt, query, setQuery) => {
   };
 
   return [
+    voices,
     lang,
     handleLangChange,
     speaking,

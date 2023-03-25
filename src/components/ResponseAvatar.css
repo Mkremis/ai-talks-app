@@ -16,7 +16,7 @@
     flex: 0 0 30%;
   }
   .content-response__avatar-img {
-    width: 40%;
+    width: auto;
     height: auto;
   }
 }

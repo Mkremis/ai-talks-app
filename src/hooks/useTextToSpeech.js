@@ -1,6 +1,8 @@
 import Artyom from 'artyom.js';
 import { useState, useEffect } from 'react';
 const loader = 'aguarda un momento por favor';
+const welcome =
+  'Hola! Soy text-davinci-003. Para hacerme una pregunta solo haz click en el botón del micrófono. Para detener una respuesta haz click en mi imagen y podras hablarme nuevamente. Empecemos!';
 const useTextToSpeech = (response, setResponse, setPrompt, query, setQuery) => {
   const [speaking, setSpeaking] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -10,6 +12,20 @@ const useTextToSpeech = (response, setResponse, setPrompt, query, setQuery) => {
   const voices = speechService.getVoices();
   const handleLangChange = (e) => setLang(e.target.value);
   speechService.initialize({ lang, debug: false });
+
+  useEffect(() => {
+    let sayWelcome = () => {
+      console.log(welcome);
+      speechService.say(welcome, {
+        onStart: () => setSpeaking(true),
+        onEnd: () => setSpeaking(false),
+      });
+    };
+    let fakeButton = {};
+    fakeButton.dispatchEvent = sayWelcome;
+    let clickEvent = new Event('click');
+    fakeButton.dispatchEvent(clickEvent);
+  }, []);
 
   //loader activation and speak the loader
   useEffect(() => {

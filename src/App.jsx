@@ -6,8 +6,12 @@ import './App.css';
 import useChat from './hooks/useChat';
 import useSpeechToText from './hooks/useSpeechToText';
 import useTextToSpeech from './hooks/useTextToSpeech';
-import MicButton from './components/MicButton';
+
 import Menu from './components/Menu';
+import Header from './components/Header';
+import ResponseAvatar from './components/ResponseAvatar';
+import ResponseText from './components/ResponseText';
+import QueryMic from './components/QueryMic';
 
 function App() {
   const [
@@ -34,29 +38,20 @@ function App() {
 
   return (
     <main className="App">
-      <header className="header">
-        <h1>AI Talks</h1>
-      </header>
+      <Header />
       <Menu voices={voices} lang={lang} handleLangChange={handleLangChange} />
       <div className="content">
         <article className="content-response">
-          <section className="content-response__avatar">
-            <img
-              className="content-response__avatar-img"
-              src={speaking ? talking : no_talking}
-              alt="Talking face"
-              onClick={handleStopSpeak}
-            />
-          </section>
-          <section className="content-response__text">
-            {loading && <p>{loader}</p>}
-            {response && <p>{response}</p>}
-          </section>
+          <ResponseAvatar
+            speaking={speaking}
+            talking={talking}
+            no_talking={no_talking}
+            handleStopSpeak={handleStopSpeak}
+          />
+          <ResponseText loading={loading} loader={loader} response={response} />
         </article>
         <article className="content-question">
-          <section className="content-question__mic">
-            <MicButton handleStart={handleStart} micIsActive={mic} />
-          </section>
+            <QueryMic handleStart={handleStart} micIsActive={mic} />
           <section className="content-question__text">
             <textarea
               className="content-question__text-input"

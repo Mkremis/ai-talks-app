@@ -1,3 +1,16 @@
+.content-question__mic {
+  background-color: rgb(82, 148, 66);
+  flex: 0 0 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@media only screen and (min-width: 600px) {
+  .content-question__mic {
+    flex: 0 0 30%;
+  }
+
 .box {
   /* position: absolute;
   top: 50%;

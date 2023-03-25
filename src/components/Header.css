@@ -1,0 +1,11 @@
+.header {
+  flex: 0 0 10%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.header > h1 {
+  font-family: 'Rubik Dirt', cursive;
+  font-size: 3rem;
+}

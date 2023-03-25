@@ -11,12 +11,6 @@ const useTextToSpeech = (response, setResponse, setPrompt, query, setQuery) => {
   const handleLangChange = (e) => setLang(e.target.value);
   speechService.initialize({ lang, debug: false });
 
-  useEffect(() => {
-    setResponse(
-      'Hola! Soy text-davinci-003. Para hacerme una pregunta solo haz click en el boton del micrófono. Para detener una respuesta haz click en mi imagen y podras hablarme nuevamente. Empecemos!'
-    );
-  }, []);
-
   //loader activation and speak the loader
   useEffect(() => {
     if (query && !response) {

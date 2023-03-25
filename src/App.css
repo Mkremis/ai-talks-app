@@ -41,27 +41,3 @@ body {
   align-items: center;
   justify-content: center;
 }
-
-@media only screen and (max-width: 600px) {
-  .content-question__text {
-    display: none;
-  }
-}
-.content-question__text {
-  flex: 0 0 70%;
-  width: 100%;
-  background-color: black;
-}
-.content-question__text-input {
-  color: rgb(82, 148, 66);
-  padding: 1rem;
-  width: 100%;
-  height: 100%;
-  background-color: black;
-  border: none;
-  text-align: left;
-  font-size: 16px;
-  outline: none;
-  overflow: auto;
-  resize: none;
-}

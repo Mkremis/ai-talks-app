@@ -12,6 +12,7 @@ import Header from './components/Header';
 import ResponseAvatar from './components/ResponseAvatar';
 import ResponseText from './components/ResponseText';
 import QueryMic from './components/QueryMic';
+import QueryText from './components/QueryText';
 
 function App() {
   const [
@@ -51,16 +52,12 @@ function App() {
           <ResponseText loading={loading} loader={loader} response={response} />
         </article>
         <article className="content-question">
-            <QueryMic handleStart={handleStart} micIsActive={mic} />
-          <section className="content-question__text">
-            <textarea
-              className="content-question__text-input"
-              placeholder="Escribe tu pregunta o haz click en el micrófono para hablar."
-              onKeyUp={handleKeyPress}
-              onChange={handleChange}
-              value={prompt}
-            />
-          </section>
+          <QueryMic handleStart={handleStart} micIsActive={mic} />
+          <QueryText
+            handleKeyPress={handleKeyPress}
+            handleChange={handleChange}
+            prompt={prompt}
+          />
         </article>
       </div>
     </main>

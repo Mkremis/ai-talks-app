@@ -49,7 +49,7 @@ function App() {
         '<span class="' +
         className +
         '">' +
-        (index === 0 ? 'Talk' : 'Chat') +
+        (index === 0 ? 'Speak' : 'Text') +
         '</span>'
       );
     },
@@ -61,14 +61,57 @@ function App() {
       <Menu voices={voices} lang={lang} handleLangChange={handleLangChange} />
       <div className="content">
         <article className="content-response">
-          <ResponseAvatar
-            speaking={speaking}
-            talking={talking}
-            no_talking={no_talking}
-            handleStopSpeak={handleStopSpeak}
-          />
+          <MediaQuery query="(max-width: 600px)">
+            <Swiper
+              pagination={pagination}
+              modules={[Pagination]}
+              className="mySwiper"
+            >
+              <SwiperSlide
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+              >
+                <ResponseAvatar
+                  speaking={speaking}
+                  talking={talking}
+                  no_talking={no_talking}
+                  handleStopSpeak={handleStopSpeak}
+                />
+              </SwiperSlide>
+              <SwiperSlide
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+              >
+                <ResponseText
+                  loading={loading}
+                  loader={loader}
+                  response={response}
+                />
+              </SwiperSlide>
+            </Swiper>
+          </MediaQuery>
+          <MediaQuery query="(min-width: 600px)">
+            <ResponseAvatar
+              speaking={speaking}
+              talking={talking}
+              no_talking={no_talking}
+              handleStopSpeak={handleStopSpeak}
+            />
 
-          <ResponseText loading={loading} loader={loader} response={response} />
+            <ResponseText
+              loading={loading}
+              loader={loader}
+              response={response}
+            />
+          </MediaQuery>
         </article>
         <article className="content-question">
           <MediaQuery query="(max-width: 600px)">

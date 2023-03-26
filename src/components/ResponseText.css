@@ -1,17 +1,10 @@
 .content-response__text {
-  display: none;
-}
-
-@media only screen and (min-width: 600px) {
-  .content-response__text {
-    display: block;
-    padding: 1rem;
-    flex: 0 0 70%;
-    width: 100%;
-    background-color: rgb(0, 0, 0);
-    color: rgb(82, 148, 66);
-    text-align: left;
-    font-size: 16px;
-    overflow-y: auto;
-  }
+  display: block;
+  padding: 1rem;
+  flex: 0 0 70%;
+  width: 100%;
+  background-color: rgb(0, 0, 0);
+  color: rgb(82, 148, 66);
+  text-align: left;
+  font-size: 16px;
 }

@@ -18,13 +18,9 @@ const QueryText = ({
         onChange={handleChange}
         value={prompt}
       />
-      <span
-        className="material-symbols-outlined"
-        id="send_chat"
-        onClick={handleSendQuery}
-      >
-        send
-      </span>
+      <button onClick={handleSendQuery} className="send_query">
+        <span className="material-symbols-outlined">send</span>
+      </button>
     </section>
   );
 };

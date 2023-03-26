@@ -1,74 +1,110 @@
-import Artyom from 'artyom.js';
 import { useState, useEffect } from 'react';
-const loader = 'aguarda un momento por favor';
-const welcome =
-  'Hola! Soy text-davinci-003. Para hacerme una pregunta solo haz click en el botón del micrófono. Para detener una respuesta haz click en mi imagen y podras hablarme nuevamente. Empecemos!';
+const loader = 'aguarda...';
 const useTextToSpeech = (response, setResponse, setPrompt, query, setQuery) => {
   const [speaking, setSpeaking] = useState(false);
   const [loading, setLoading] = useState(false);
   const [lang, setLang] = useState('es-ES');
-
-  const speechService = new Artyom();
-  const voices = speechService.getVoices();
+  const [lastResponse, setLastResponse] = useState('');
+  const voices = window.speechSynthesis.getVoices();
   const handleLangChange = (e) => setLang(e.target.value);
-  speechService.initialize({ lang, debug: false });
-
-  useEffect(() => {
-    let sayWelcome = () => {
-      console.log(welcome);
-      speechService.say(welcome, {
-        onStart: () => setSpeaking(true),
-        onEnd: () => setSpeaking(false),
-      });
-    };
+  const synth = window.speechSynthesis;
+  // Splits a string into an array of strings with a limited size (chunk_length):
+  const splitStringByChunks = (input, chunk_length) => {
+    input = input || '';
+    chunk_length = chunk_length || 100;
+    let curr = chunk_length;
+    let prev = 0;
+    let output = [];
+    while (input[curr]) {
+      if (input[curr++] == ' ') {
+        output.push(input.substring(prev, curr));
+        prev = curr;
+        curr += chunk_length;
+      }
+    }
+    output.push(input.substr(prev));
+    return output;
+  };
+  //Talks a text according to the given parameters.
+  const talk = (text, actualChunk, totalChunks) => {
+    let msg = new SpeechSynthesisUtterance();
+    msg.text = text;
+    msg.lang = lang;
+    // If is first text chunk (onStart)
+    if (actualChunk == 1) {
+      setSpeaking(true);
+    }
+    // If is final text chunk (onEnd)
+    if (actualChunk >= totalChunks) {
+      msg.onend = () => {
+        setSpeaking(false);
+        setLoading(false);
+        // setResponse('');
+        setPrompt('');
+        setQuery(null);
+      };
+    }
+    //due Chrome on mobile require an user event prior to able the speech service, this is a simulated user click event:
     let fakeButton = {};
-    fakeButton.dispatchEvent = sayWelcome;
+    fakeButton.dispatchEvent = () => window.speechSynthesis.speak(msg);
     let clickEvent = new Event('click');
     fakeButton.dispatchEvent(clickEvent);
-  }, []);
-
-  //loader activation and speak the loader
-  useEffect(() => {
-    if (query && !response) {
-      setLoading(true);
-      speechService.say(loader);
+  };
+  // Process the given text into chunks and execute the function talk
+  const handleSpeak = (text) => {
+    const max_chunk_length = 115;
+    let definitiveText = [];
+    if (text.length > max_chunk_length) {
+      // Split the given definitiveText by pause reading characters [",",":",";",". "] to provide a natural reading feeling.
+      let naturalReading = text.split(/,|:|\. |;/);
+      naturalReading.forEach((chunk) => {
+        // If the sentence is too long and could block the API, split it to prevent any errors.
+        if (chunk.length > max_chunk_length) {
+          // Process the providen string into strings (withing an array) of maximum aprox. 115 characters to prevent any error with the API.
+          let temp_processed = splitStringByChunks(chunk, max_chunk_length);
+          // Add items of the processed sentence into the definitiveText chunk.
+          definitiveText.push.apply(definitiveText, temp_processed);
+        } else {
+          // Otherwise just add the sentence to being spoken.
+          definitiveText.push(chunk);
+        }
+      });
+    } else {
+      definitiveText.push(text);
     }
-  }, [query, response, setLoading]);
-
-  //speak the response
-  useEffect(() => {
-    if (response) {
-      setLoading(false);
-      //speaker function:
-      let sayResponse = () => {
-        speechService.say(response, {
-          onStart: () => {
-            setSpeaking(true);
-          },
-          onEnd: () => {
-            setSpeaking(false);
-            setResponse('');
-            setPrompt('');
-            setQuery(null);
-          },
-        });
-      };
-      //due Chrome on mobile require an user event prior to able the speech service, this is a simulated user click event:
-      let fakeButton = {};
-      fakeButton.dispatchEvent = sayResponse;
-      let clickEvent = new Event('click');
-      fakeButton.dispatchEvent(clickEvent);
-    }
-  }, [response, setLoading]);
-
+    // Clean any empty item in array
+    definitiveText = definitiveText.filter((e) => e);
+    definitiveText.forEach((chunk, index) => {
+      let numberOfChunk = index + 1;
+      if (chunk) {
+        talk(chunk, numberOfChunk, definitiveText.length);
+      }
+    });
+  };
   const handleStopSpeak = () => {
-    speechService.shutUp();
+    synth.cancel();
     setSpeaking(false);
-    setLoading(false);
     setResponse('');
+    setLastResponse('');
     setPrompt('');
     setQuery(null);
   };
+
+  //loader activation
+  useEffect(() => {
+    if (query && response === lastResponse) {
+      setLoading(true);
+      handleSpeak(loader);
+    }
+  }, [query, response, setLoading]);
+  //speech response
+  useEffect(() => {
+    if (response && response !== lastResponse) {
+      setLoading(false);
+      setLastResponse(response);
+      handleSpeak(response);
+    }
+  }, [response, lastResponse, setLastResponse, setLoading, speaking]);
 
   return [
     voices,

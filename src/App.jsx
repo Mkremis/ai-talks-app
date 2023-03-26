@@ -25,6 +25,7 @@ function App() {
     setQuery,
     handleChange,
   ] = useChat();
+  const [handleStart, mic] = useSpeechToText(setPrompt, setQuery);
   const [
     voices,
     lang,
@@ -34,8 +35,6 @@ function App() {
     loader,
     loading,
   ] = useTextToSpeech(response, setResponse, setPrompt, query, setQuery);
-
-  const [handleStart, mic] = useSpeechToText(setPrompt, setQuery);
 
   return (
     <main className="App">

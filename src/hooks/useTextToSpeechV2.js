@@ -1,99 +1,69 @@
-import Speech from 'speak-tts';
+import Artyom from 'artyom.js';
 import { useState, useEffect } from 'react';
-const loader = 'aguarda un momento por favor..';
+const loader = 'aguarda un momento por favor';
+
 const useTextToSpeech = (response, setResponse, setPrompt, query, setQuery) => {
   const [speaking, setSpeaking] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [text, setText] = useState('');
+  const [lang, setLang] = useState('es-ES');
 
-  //Check for browser support :
-  const speech = new Speech(); // will throw an exception if not browser supported
-  if (speech.hasBrowserSupport()) {
-    // returns a boolean
-    console.log('speech synthesis supported');
-  }
-  //Init the speech component : const speech = new Speech();
-  // Example with full conf
-  speech.init({
-    volume: 1,
-    lang: 'es-US',
-    rate: 1,
-    pitch: 1,
-    voice: null,
-    splitSentences: true,
-    listeners: {
-      onvoiceschanged: (voices) => {
-        console.log('Event voiceschanged', voices);
-      },
-    },
-  });
-  //seting language
-  speech.setLanguage('es-US');
+  const speechService = new Artyom();
+  const voices = speechService.getVoices();
+  const handleLangChange = (e) => setLang(e.target.value);
+  speechService.initialize({ lang, debug: false });
 
-  //loader activation
+  //loader activation and speak the loader
   useEffect(() => {
     if (query && !response) {
       setLoading(true);
-      setText(loader);
+      speechService.say(loader);
     }
   }, [query, response, setLoading]);
 
+  //speak the response
   useEffect(() => {
     if (response) {
       setLoading(false);
-      setText(response);
+      //speaker function:
+      let sayResponse = () => {
+        speechService.say(response, {
+          onStart: () => {
+            setSpeaking(true);
+          },
+          onEnd: () => {
+            setSpeaking(false);
+            setResponse('');
+            setPrompt('');
+            setQuery(null);
+          },
+        });
+      };
+      //due Chrome on mobile require an user event prior to able the speech service, this is a simulated user click event:
+      let fakeButton = {};
+      fakeButton.dispatchEvent = sayResponse;
+      let clickEvent = new Event('click');
+      fakeButton.dispatchEvent(clickEvent);
     }
   }, [response, setLoading]);
 
-  useEffect(() => {
-    if (text) {
-      speech
-        .speak({
-          text: text,
-          queue: true,
-          listeners: {
-            onstart: () => {
-              setSpeaking(true);
-            },
-            onend: () => {
-              setText('');
-              setSpeaking(false);
-              setResponse('');
-              setPrompt('');
-              setQuery(null);
-            },
-          },
-        })
-        .then(() => {
-          console.log('Success !');
-        })
-        .catch((e) => {
-          console.error('An error occurred :', e);
-        });
-    }
-  }, [text, setText, setSpeaking, setResponse, setPrompt, setQuery]);
-
-  useEffect(() => {
-    if (speaking) {
-      let r = setInterval(function () {
-        if (!speechSynthesis.speaking) clearInterval(r);
-        else {
-          speechSynthesis.pause();
-          speechSynthesis.resume();
-        }
-      }, 3000);
-    }
-  }, [speaking]);
-
   const handleStopSpeak = () => {
-    synth.cancel();
+    speechService.shutUp();
     setSpeaking(false);
+    setLoading(false);
     setResponse('');
     setPrompt('');
     setQuery(null);
   };
 
-  return [speaking, handleStopSpeak, loader, loading];
+  return [
+    voices,
+    lang,
+    handleLangChange,
+    speaking,
+    handleStopSpeak,
+    loader,
+    loading,
+  ];
 };
 
 export default useTextToSpeech;

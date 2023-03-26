@@ -40,7 +40,7 @@ const useTextToSpeech = (response, setResponse, setPrompt, query, setQuery) => {
         setSpeaking(false);
         setLoading(false);
         // setResponse('');
-        setPrompt('');
+        // setPrompt('');
         setQuery(null);
       };
     }

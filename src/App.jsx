@@ -7,6 +7,7 @@ import useChat from './hooks/useChat';
 import useSpeechToText from './hooks/useSpeechToText';
 import useTextToSpeech from './hooks/useTextToSpeech';
 
+import MediaQuery from 'react-responsive';
 import Menu from './components/Menu';
 import Header from './components/Header';
 import ResponseAvatar from './components/ResponseAvatar';
@@ -48,6 +49,13 @@ function App() {
             no_talking={no_talking}
             handleStopSpeak={handleStopSpeak}
           />
+          <MediaQuery query="(max-width: 600px)">
+            <QueryText
+              handleKeyPress={handleKeyPress}
+              handleChange={handleChange}
+              prompt={prompt}
+            />
+          </MediaQuery>
           <ResponseText loading={loading} loader={loader} response={response} />
         </article>
         <article className="content-question">

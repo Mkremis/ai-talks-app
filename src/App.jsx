@@ -2,6 +2,8 @@ import 'the-new-css-reset/css/reset.css';
 import React, { useRef, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
+import 'swiper/css/pagination';
+import { Pagination } from 'swiper';
 
 import talking from './assets/talking.gif';
 import no_talking from './assets/no_talking.png';
@@ -40,6 +42,18 @@ function App() {
     loader,
     loading,
   ] = useTextToSpeech(response, setResponse, setPrompt, query, setQuery);
+  const pagination = {
+    clickable: true,
+    renderBullet: function (index, className) {
+      return (
+        '<span class="' +
+        className +
+        '">' +
+        (index === 0 ? 'Talk' : 'Chat') +
+        '</span>'
+      );
+    },
+  };
 
   return (
     <main className="App">
@@ -58,7 +72,11 @@ function App() {
         </article>
         <article className="content-question">
           <MediaQuery query="(max-width: 600px)">
-            <Swiper className="mySwiper">
+            <Swiper
+              pagination={pagination}
+              modules={[Pagination]}
+              className="mySwiper"
+            >
               <SwiperSlide
                 style={{
                   display: 'flex',

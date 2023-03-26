@@ -30,10 +30,12 @@ const useChat = () => {
       setQuery(prompt);
     }
   };
+  const handleSendQuery = () => setQuery(prompt);
   const handleChange = (e) => setPrompt(e.target.value);
 
   return [
     handleKeyPress,
+    handleSendQuery,
     prompt,
     setPrompt,
     response,

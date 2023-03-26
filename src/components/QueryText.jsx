@@ -1,7 +1,12 @@
 import react from 'react';
 import './QueryText.css';
 
-const QueryText = ({ handleKeyPress, handleChange, prompt }) => {
+const QueryText = ({
+  handleKeyPress,
+  handleSendQuery,
+  handleChange,
+  prompt,
+}) => {
   return (
     <section className="content-question__text">
       <textarea
@@ -13,6 +18,13 @@ const QueryText = ({ handleKeyPress, handleChange, prompt }) => {
         onChange={handleChange}
         value={prompt}
       />
+      <span
+        className="material-symbols-outlined"
+        id="send_chat"
+        onClick={handleSendQuery}
+      >
+        send
+      </span>
     </section>
   );
 };

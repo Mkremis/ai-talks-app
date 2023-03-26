@@ -24,6 +24,7 @@ import QueryText from './components/QueryText';
 function App() {
   const [
     handleKeyPress,
+    handleSendQuery,
     prompt,
     setPrompt,
     response,
@@ -140,6 +141,7 @@ function App() {
               >
                 <QueryText
                   handleKeyPress={handleKeyPress}
+                  handleSendQuery={handleSendQuery}
                   handleChange={handleChange}
                   prompt={prompt}
                 />
@@ -150,6 +152,7 @@ function App() {
             <QueryMic handleStart={handleStart} micIsActive={mic} />
             <QueryText
               handleKeyPress={handleKeyPress}
+              handleSendQuery={handleSendQuery}
               handleChange={handleChange}
               prompt={prompt}
             />

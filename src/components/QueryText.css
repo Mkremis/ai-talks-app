@@ -19,6 +19,7 @@
   }
 }
 .content-question__text-input {
+  position: relative;
   flex: 0 0 100%;
   color: rgb(82, 148, 66);
   padding: 0.5rem;
@@ -31,4 +32,12 @@
   outline: none;
   /* overflow: auto; */
   resize: none;
+}
+#send_chat {
+  cursor: pointer;
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  color: rgb(82, 148, 66);
+  font-size: 2rem;
 }

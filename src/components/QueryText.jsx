@@ -19,7 +19,7 @@ const QueryText = ({
         value={prompt}
       />
       <button onClick={handleSendQuery} className="send_query">
-        <span className="material-symbols-outlined">send</span>
+        <span className="material-symbols-outlined">send</span> 
       </button>
     </section>
   );

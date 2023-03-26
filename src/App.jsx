@@ -48,9 +48,10 @@ function App() {
     renderBullet: function (index, className) {
       return (
         '<span class="' +
+        'material-symbols-outlined ' +
         className +
         '">' +
-        (index === 0 ? 'Speak' : 'Text') +
+        (index === 0 ? 'headset_mic' : 'edit_note') +
         '</span>'
       );
     },

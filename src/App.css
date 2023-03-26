@@ -54,7 +54,7 @@ body {
   justify-content: center;
 }
 .swiper-pagination-bullet {
-  width: 6ch;
+  width: 20px;
   height: 20px;
   text-align: center;
   line-height: 20px;

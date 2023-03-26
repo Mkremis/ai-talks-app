@@ -1,4 +1,8 @@
 import 'the-new-css-reset/css/reset.css';
+import React, { useRef, useState } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+
 import talking from './assets/talking.gif';
 import no_talking from './assets/no_talking.png';
 // import viteLogo from '/vite.svg';
@@ -6,8 +10,7 @@ import './App.css';
 import useChat from './hooks/useChat';
 import useSpeechToText from './hooks/useSpeechToText';
 import useTextToSpeech from './hooks/useTextToSpeech';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
+
 import MediaQuery from 'react-responsive';
 import Menu from './components/Menu';
 import Header from './components/Header';
@@ -65,13 +68,15 @@ function App() {
                 }}
               >
                 <QueryMic handleStart={handleStart} micIsActive={mic} />
-              </SwiperSlide >
-              <SwiperSlide style={{
+              </SwiperSlide>
+              <SwiperSlide
+                style={{
                   display: 'flex',
                   flexDirection: 'column',
                   alignItems: 'center',
                   justifyContent: 'center',
-                }}>
+                }}
+              >
                 <QueryText
                   handleKeyPress={handleKeyPress}
                   handleChange={handleChange}

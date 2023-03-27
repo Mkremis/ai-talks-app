@@ -64,8 +64,8 @@ body {
   background: rgb(45, 80, 37);
 }
 .swiper-pagination {
-  max-width: 50%;
-  transform: translate(50%);
+  max-width: 55%;
+  transform: translate(45%);
 }
 
 .swiper-pagination-bullet-active {

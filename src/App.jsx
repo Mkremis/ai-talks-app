@@ -20,6 +20,8 @@ import ResponseAvatar from './components/ResponseAvatar';
 import ResponseText from './components/ResponseText';
 import QueryMic from './components/QueryMic';
 import QueryText from './components/QueryText';
+import useSpeechCommand from './hooks/useSpeechCommand';
+useSpeechCommand;
 
 function App() {
   const [
@@ -34,6 +36,7 @@ function App() {
     handleChange,
   ] = useChat();
   const [handleStart, mic] = useSpeechToText(setPrompt, setQuery);
+
   const [
     voices,
     lang,
@@ -43,6 +46,7 @@ function App() {
     loader,
     loading,
   ] = useTextToSpeech(response, setResponse, setPrompt, query, setQuery);
+  useSpeechCommand(handleStart);
   const pagination = {
     clickable: true,
     renderBullet: function (index, className) {

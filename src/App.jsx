@@ -14,7 +14,7 @@ import useSpeechToText from './hooks/useSpeechToText';
 import useTextToSpeech from './hooks/useTextToSpeech';
 
 import MediaQuery from 'react-responsive';
-import Menu from './components/Menu';
+import Languages from './components/Languages';
 import Header from './components/Header';
 import ResponseAvatar from './components/ResponseAvatar';
 import ResponseText from './components/ResponseText';
@@ -72,7 +72,11 @@ function App() {
   return (
     <main className="App">
       <Header />
-      <Menu voices={voices} lang={lang} handleLangChange={handleLangChange} />
+      {/* <Languages
+        voices={voices}
+        lang={lang}
+        handleLangChange={handleLangChange}
+      /> */}
       <div className="content">
         <article className="content-response">
           <MediaQuery query="(max-width: 600px)">

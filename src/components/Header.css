@@ -1,11 +1,23 @@
 .header {
+  font-family: 'Rubik Dirt', cursive;
+  font-size: 3rem;
   flex: 0 0 10%;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.header > h1 {
-  font-family: 'Rubik Dirt', cursive;
-  font-size: 3rem;
+.left-header {
+  flex: 0 0 25%;
+}
+.center-header {
+  flex: 0 0 50%;
+}
+.right-header {
+  flex: 0 0 25%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 1rem;
 }

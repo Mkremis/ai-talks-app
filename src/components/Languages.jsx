@@ -1,9 +1,9 @@
 import React from 'react';
-import './Menu.css';
-const Menu = ({ voices, lang, handleLangChange }) => {
+import './Languages.css';
+const Languages = ({ voices, lang, handleLangChange }) => {
   if (voices.length > 0) {
     return (
-      <aside className="menu">
+      <aside className="Languages">
         <div className="select">
           <select
             name="voices"
@@ -25,4 +25,4 @@ const Menu = ({ voices, lang, handleLangChange }) => {
     );
   }
 };
-export default Menu;
+export default Languages;

@@ -16,9 +16,15 @@ const useSpeechToText = (setPrompt, setQuery) => {
       };
       queryRecognition.onstart = () => {
         setMic(true);
-        const sound = new Audio(notification);
-        sound.currentTime = 0;
-        sound.play();
+        const notif = () => {
+          const sound = new Audio(notification);
+          sound.currentTime = 0;
+          sound.play();
+        };
+        let fakeButton = document.getElementById('fakeButton');
+        fakeButton.dispatchEvent = () => notif();
+        let clickEvent = new Event('click');
+        fakeButton.dispatchEvent(clickEvent);
       };
       queryRecognition.onend = () => setMic(false);
       setRecognition(recognition);

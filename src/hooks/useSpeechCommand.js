@@ -22,11 +22,9 @@ const useSpeechCommand = (handleStart, setListening) => {
     result.trim().toLowerCase();
     console.log(result);
     if (result.includes(command)) {
-      recognition.abort();
+     
 
-      const sound = new Audio(notification);
-      sound.currentTime = 0;
-      sound.play();
+      recognition.abort();
       handleStart();
     } else {
       console.log(`${result} no es un comando valido`);

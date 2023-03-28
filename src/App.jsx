@@ -175,6 +175,7 @@ function App() {
           </MediaQuery>
         </article>
       </div>
+      <button id="fakeButton" hidden={true}></button>
     </main>
   );
 }

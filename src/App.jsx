@@ -1,5 +1,5 @@
 import 'the-new-css-reset/css/reset.css';
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -24,6 +24,7 @@ import useSpeechCommand from './hooks/useSpeechCommand';
 useSpeechCommand;
 
 function App() {
+  const [listening, setListening] = useState(false);
   const [
     handleKeyPress,
     handleSendQuery,
@@ -46,7 +47,17 @@ function App() {
     loader,
     loading,
   ] = useTextToSpeech(response, setResponse, setPrompt, query, setQuery);
-  useSpeechCommand(handleStart);
+  const startRecognition = useSpeechCommand(handleStart, setListening);
+
+  useEffect(() => {
+    if (!query && !speaking && !mic) setListening(true);
+    console.log('query', query);
+    console.log('listening', listening);
+  }, [query, speaking, mic]);
+
+  useEffect(() => {
+    if (listening) startRecognition();
+  }, [listening]);
   const pagination = {
     clickable: true,
     renderBullet: function (index, className) {

@@ -102,7 +102,7 @@ const useTextToSpeech = (response, setResponse, setPrompt, query, setQuery) => {
     if (response && response !== lastResponse) {
       setLoading(false);
       setLastResponse(response);
-      handleSpeak(response);
+      setTimeout(() => handleSpeak(response), 1000);
     }
   }, [response, lastResponse, setLastResponse, setLoading, speaking]);
 

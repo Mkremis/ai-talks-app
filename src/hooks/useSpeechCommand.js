@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import notification from '../assets/notification.mp3';
 
 const useSpeechCommand = (handleStart, setListening) => {
   const command = 'pregunta';
@@ -21,9 +22,11 @@ const useSpeechCommand = (handleStart, setListening) => {
     result.trim().toLowerCase();
     console.log(result);
     if (result.includes(command)) {
-      // stopRecognition();
+      recognition.abort();
 
-      console.log(`${result} si es un comando valido`);
+      const sound = new Audio(notification);
+      sound.currentTime = 0;
+      sound.play();
       handleStart();
     } else {
       console.log(`${result} no es un comando valido`);
@@ -32,6 +35,8 @@ const useSpeechCommand = (handleStart, setListening) => {
 
   recognition.onerror = (event) => {
     console.log(`Speech recognition error: ${event.error}`);
+    recognition.abort();
+    recognition.start();
   };
 
   recognition.onend = () => {

@@ -14,7 +14,12 @@ const useSpeechToText = (setPrompt, setQuery) => {
         setPrompt(res);
         setQuery(res);
       };
-      queryRecognition.onstart = () => setMic(true);
+      queryRecognition.onstart = () => {
+        setMic(true);
+        const sound = new Audio(notification);
+        sound.currentTime = 0;
+        sound.play();
+      };
       queryRecognition.onend = () => setMic(false);
       setRecognition(recognition);
       queryRecognition.start();
@@ -22,13 +27,6 @@ const useSpeechToText = (setPrompt, setQuery) => {
       return;
     }
   };
-  useEffect(() => {
-    if (mic) {
-      new Audio(notification);
-      // notification.currentTime = 0;
-      notification.play();
-    }
-  }, [mic]);
 
   return [handleStart, mic];
 };

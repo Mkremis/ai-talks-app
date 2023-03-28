@@ -5,9 +5,10 @@ const useTextToSpeech = (response, setResponse, setPrompt, query, setQuery) => {
   const [loading, setLoading] = useState(false);
   const [lang, setLang] = useState('es-ES');
   const [lastResponse, setLastResponse] = useState('');
-  const voices = window.speechSynthesis.getVoices();
-  const handleLangChange = (e) => setLang(e.target.value);
   const synth = window.speechSynthesis;
+  const voices = synth.getVoices();
+  const handleLangChange = (e) => setLang(e.target.value);
+
   // Splits a string into an array of strings with a limited size (chunk_length):
   const splitStringByChunks = (input, chunk_length) => {
     input = input || '';
@@ -94,7 +95,7 @@ const useTextToSpeech = (response, setResponse, setPrompt, query, setQuery) => {
   useEffect(() => {
     if (query && response === lastResponse) {
       setLoading(true);
-      handleSpeak(loader);
+      // handleSpeak(loader);
     }
   }, [query, response, setLoading]);
   //speech response

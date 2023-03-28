@@ -50,10 +50,10 @@ function App() {
   const startRecognition = useSpeechCommand(handleStart, setListening);
 
   useEffect(() => {
-    if (!query && !speaking && !mic) setListening(true);
+    if (!query && !speaking && !mic && !loading) setListening(true);
     console.log('query', query);
     console.log('listening', listening);
-  }, [query, speaking, mic]);
+  }, [query, speaking, mic, loading]);
 
   useEffect(() => {
     if (listening) startRecognition();

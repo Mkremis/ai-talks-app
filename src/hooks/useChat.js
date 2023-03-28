@@ -16,7 +16,9 @@ const useChat = () => {
       // Separamos el texto en líneas
       const lines = text.split('\n');
       // Expresión regular que busca líneas con viñetas de guiones
-      const regexBullets = /^ *- (.*)$/;
+      // const regexBullets = /^ *- (.*)$/;
+      const regexBullets = /^ *- ?(.*)$/;
+
       // Contador para las enumeraciones
       let counter = 1;
       // Recorremos cada línea del texto

@@ -1,4 +1,5 @@
 .header {
+  position: relative;
   font-family: 'Rubik Dirt', cursive;
   font-size: 3rem;
   flex: 0 0 10%;

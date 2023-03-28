@@ -12,14 +12,16 @@ import './App.css';
 import useChat from './hooks/useChat';
 import useSpeechToText from './hooks/useSpeechToText';
 import useTextToSpeech from './hooks/useTextToSpeech';
+import useModal from './hooks/useModal';
 
 import MediaQuery from 'react-responsive';
-import Languages from './components/Languages';
 import Header from './components/Header';
+import Menu from './components/Menu';
 import ResponseAvatar from './components/ResponseAvatar';
 import ResponseText from './components/ResponseText';
 import QueryMic from './components/QueryMic';
 import QueryText from './components/QueryText';
+
 // import useSpeechCommand from './hooks/useSpeechCommand';
 
 function App() {
@@ -46,6 +48,7 @@ function App() {
     loading,
   ] = useTextToSpeech(response, setResponse, setPrompt, query, setQuery);
   const [handleStart, mic] = useSpeechToText(setPrompt, setQuery, lang);
+  const [isOpen, openModal, closeModal] = useModal();
   // const startRecognition = useSpeechCommand(handleStart, setListening);
 
   // useEffect(() => {
@@ -71,12 +74,13 @@ function App() {
 
   return (
     <main className="App">
-      <Header />
-      {/* <Languages
+      <Header isOpen={isOpen} openModal={openModal} closeModal={closeModal} />
+      <Menu
+        isOpen={isOpen}
         voices={voices}
         lang={lang}
         handleLangChange={handleLangChange}
-      /> */}
+      />
       <div className="content">
         <article className="content-response">
           <MediaQuery query="(max-width: 600px)">

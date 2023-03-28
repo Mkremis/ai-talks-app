@@ -3,7 +3,10 @@ import './Languages.css';
 const Languages = ({ voices, lang, handleLangChange }) => {
   if (voices.length > 0) {
     return (
-      <aside className="Languages">
+      <section className="languages">
+        <div className="languages-title">
+          <h2>Selecciona un Idioma</h2>
+        </div>
         <div className="select">
           <select
             name="voices"
@@ -21,7 +24,7 @@ const Languages = ({ voices, lang, handleLangChange }) => {
             })}
           </select>
         </div>
-      </aside>
+      </section>
     );
   }
 };

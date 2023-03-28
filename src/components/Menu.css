@@ -1,0 +1,19 @@
+.modal {
+  position: fixed;
+  z-index: 12;
+  background-color: rgb(212, 231, 207);
+  top: 10vh;
+  right: 0;
+  width: 70vw;
+  height: 70vh;
+  display: none;
+}
+.modal.is-open {
+  display: block;
+}
+.menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}

@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
-const loader = 'aguarda...';
+const loader = 'aguarda un momento por favor';
 const useTextToSpeech = (response, setResponse, setPrompt, query, setQuery) => {
   const [speaking, setSpeaking] = useState(false);
   const [loading, setLoading] = useState(false);
   const [lang, setLang] = useState('es-ES');
+  const [speech, setSpeech] = useState('');
   const [lastResponse, setLastResponse] = useState('');
   const synth = window.speechSynthesis;
   const voices = synth.getVoices();
@@ -95,7 +96,7 @@ const useTextToSpeech = (response, setResponse, setPrompt, query, setQuery) => {
   useEffect(() => {
     if (query && response === lastResponse) {
       setLoading(true);
-      // handleSpeak(loader);
+      setSpeech(loader);
     }
   }, [query, response, setLoading]);
   //speech response
@@ -103,10 +104,14 @@ const useTextToSpeech = (response, setResponse, setPrompt, query, setQuery) => {
     if (response && response !== lastResponse) {
       setLoading(false);
       setLastResponse(response);
-      setTimeout(() => handleSpeak(response), 1000);
+      setSpeech(response);
     }
   }, [response, lastResponse, setLastResponse, setLoading, speaking]);
 
+  //start speeking
+  useEffect(() => {
+    if (speech) handleSpeak(speech);
+  }, [speech]);
   return [
     voices,
     lang,

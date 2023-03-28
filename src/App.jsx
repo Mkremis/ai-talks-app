@@ -20,11 +20,10 @@ import ResponseAvatar from './components/ResponseAvatar';
 import ResponseText from './components/ResponseText';
 import QueryMic from './components/QueryMic';
 import QueryText from './components/QueryText';
-import useSpeechCommand from './hooks/useSpeechCommand';
-useSpeechCommand;
+// import useSpeechCommand from './hooks/useSpeechCommand';
 
 function App() {
-  const [listening, setListening] = useState(false);
+  // const [listening, setListening] = useState(false);
   const [
     handleKeyPress,
     handleSendQuery,
@@ -36,7 +35,6 @@ function App() {
     setQuery,
     handleChange,
   ] = useChat();
-  const [handleStart, mic] = useSpeechToText(setPrompt, setQuery);
 
   const [
     voices,
@@ -47,17 +45,16 @@ function App() {
     loader,
     loading,
   ] = useTextToSpeech(response, setResponse, setPrompt, query, setQuery);
-  const startRecognition = useSpeechCommand(handleStart, setListening);
+  const [handleStart, mic] = useSpeechToText(setPrompt, setQuery, lang);
+  // const startRecognition = useSpeechCommand(handleStart, setListening);
 
-  useEffect(() => {
-    if (!query && !speaking && !mic && !loading) setListening(true);
-    console.log('query', query);
-    console.log('listening', listening);
-  }, [query, speaking, mic, loading]);
+  // useEffect(() => {
+  //   if (!query && !speaking && !mic && !loading) setListening(true);
+  // }, [query, speaking, mic, loading]);
 
-  useEffect(() => {
-    if (listening) startRecognition();
-  }, [listening]);
+  // useEffect(() => {
+  //   if (listening) startRecognition();
+  // }, [listening]);
   const pagination = {
     clickable: true,
     renderBullet: function (index, className) {

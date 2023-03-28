@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import notification from '../assets/notification.mp3';
 
 const useSpeechCommand = (handleStart, setListening) => {
   const command = 'pregunta';
@@ -22,8 +21,6 @@ const useSpeechCommand = (handleStart, setListening) => {
     result.trim().toLowerCase();
     console.log(result);
     if (result.includes(command)) {
-     
-
       recognition.abort();
       handleStart();
     } else {

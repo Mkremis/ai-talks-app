@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import notification from '../assets/notification.mp3';
 
 const useSpeechToText = (setPrompt, setQuery) => {
   const [recognition, setRecognition] = useState(null);
@@ -21,6 +22,13 @@ const useSpeechToText = (setPrompt, setQuery) => {
       return;
     }
   };
+  useEffect(() => {
+    if (mic) {
+      new Audio(notification);
+      // notification.currentTime = 0;
+      notification.play();
+    }
+  }, [mic]);
 
   return [handleStart, mic];
 };

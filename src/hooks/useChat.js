@@ -5,13 +5,15 @@ const useChat = () => {
   const [prompt, setPrompt] = useState('');
   const [query, setQuery] = useState(null);
   const [response, setResponse] = useState('');
-
+  const [temperature, setTemperature] = useState(0.2);
+  const handleTemperature = (temp) => setTemperature(temp);
   const chat = async (prompt) => {
     const configuration = new Configuration({
       apiKey: import.meta.env.VITE_OPENAI_API_KEY,
       // apiKey: process.env.REACT_APP_OPENAI_API_KEY,
     });
     const openai = new OpenAIApi(configuration);
+
     function bulletReplace(text) {
       // Separamos el texto en líneas
       const lines = text.split('\n');
@@ -40,7 +42,7 @@ const useChat = () => {
       model: 'text-davinci-003',
       prompt,
       max_tokens: 900,
-      temperature: 1,
+      temperature: temperature,
     });
 
     setResponse(bulletReplace(res.data.choices[0].text));
@@ -67,6 +69,7 @@ const useChat = () => {
     query,
     setQuery,
     handleChange,
+    handleTemperature,
   ];
 };
 

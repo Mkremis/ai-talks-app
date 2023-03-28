@@ -10,7 +10,11 @@ const Header = ({ isOpen, openModal, closeModal }) => {
         <h1>AI Talks</h1>
       </div>
       <div className="right-header">
-        <span className="material-symbols-outlined" onClick={handleMenu}>
+        <span
+          className="material-symbols-outlined"
+          onClick={handleMenu}
+          style={{ cursor: 'pointer' }}
+        >
           menu
         </span>
       </div>

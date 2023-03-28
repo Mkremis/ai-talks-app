@@ -8,13 +8,13 @@
   justify-content: center;
 }
 .left-header {
-  flex: 0 0 25%;
+  flex: 0 0 20%;
 }
 .center-header {
-  flex: 0 0 50%;
+  flex: 0 0 60%;
 }
 .right-header {
-  flex: 0 0 25%;
+  flex: 0 0 20%;
   height: 100%;
   display: flex;
   align-items: center;

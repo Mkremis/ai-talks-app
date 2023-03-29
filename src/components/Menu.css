@@ -8,6 +8,12 @@
   height: 70vh;
   display: none;
 }
+@media only screen and (min-width: 600px) {
+  .modal {
+    width: 20vw;
+    height: 70vh;
+  }
+}
 .modal.is-open {
   display: block;
 }

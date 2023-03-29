@@ -15,7 +15,7 @@ const Header = ({ isOpen, openModal, closeModal }) => {
           onClick={handleMenu}
           style={{ cursor: 'pointer' }}
         >
-          menu
+          {isOpen ? 'Menu_open' : 'Menu'}
         </span>
       </div>
     </header>

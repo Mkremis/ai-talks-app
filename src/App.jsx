@@ -36,6 +36,7 @@ function App() {
     query,
     setQuery,
     handleChange,
+    temperature,
     handleTemperature,
     model,
     handleModel,
@@ -82,6 +83,7 @@ function App() {
         isOpen={isOpen}
         voices={voices}
         lang={lang}
+        temperature={temperature}
         handleLangChange={handleLangChange}
         handleTemperature={handleTemperature}
         model={model}

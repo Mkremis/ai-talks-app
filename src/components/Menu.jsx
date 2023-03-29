@@ -9,6 +9,7 @@ const Menu = ({
   voices,
   lang,
   handleLangChange,
+  temperature,
   handleTemperature,
   model,
   handleModel,
@@ -22,7 +23,10 @@ const Menu = ({
           lang={lang}
           handleLangChange={handleLangChange}
         />
-        <Temperatures handleTemperature={handleTemperature} />
+        <Temperatures
+          temperature={temperature}
+          handleTemperature={handleTemperature}
+        />
       </nav>
     </article>
   );

@@ -7,7 +7,7 @@ const useChat = () => {
   const [response, setResponse] = useState('');
   const [temperature, setTemperature] = useState(0.2);
   const [model, setModel] = useState('text-davinci-003');
-
+  console.log(temperature);
   const bulletReplace = (text) => {
     // Separamos el texto en líneas
     const lines = text.split('\n');
@@ -79,6 +79,7 @@ const useChat = () => {
     query,
     setQuery,
     handleChange,
+    temperature,
     handleTemperature,
     model,
     handleModel,

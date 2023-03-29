@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './Temperatures.css';
-const Temperatures = ({ handleTemperature }) => {
+const Temperatures = ({ temperature, handleTemperature }) => {
   const handleRange = (e) => handleTemperature(e.target.value / 10);
 
   return (
@@ -12,9 +12,9 @@ const Temperatures = ({ handleTemperature }) => {
           <input
             type="range"
             min={0}
-            max={15}
+            max={12}
             step={1}
-            defaultValue={2}
+            value={temperature * 10}
             onChange={handleRange}
             className="custom-slider"
           />

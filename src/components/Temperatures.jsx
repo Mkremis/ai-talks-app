@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
 import './Temperatures.css';
+
 const Temperatures = ({ temperature, handleTemperature }) => {
   const handleRange = (e) => handleTemperature(e.target.value / 10);
 

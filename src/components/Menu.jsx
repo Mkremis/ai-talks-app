@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import './Menu.css';
+import Models from './Models';
 import Languages from './Languages';
 import Temperatures from './Temperatures';
-import Models from './Models';
+
+import MenuFooter from './MenuFooter';
 
 const Menu = ({
   isOpen,
@@ -27,6 +29,7 @@ const Menu = ({
           temperature={temperature}
           handleTemperature={handleTemperature}
         />
+        {/* <MenuFooter /> */}
       </nav>
     </article>
   );

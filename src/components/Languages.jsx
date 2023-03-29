@@ -7,7 +7,7 @@ const Languages = ({ voices, lang, handleLangChange }) => {
         <div className="languages-title">
           <h2>Selecciona un Idioma</h2>
         </div>
-        <div className="select">
+        <div className="select-languages">
           <select
             name="voices"
             id="voices"

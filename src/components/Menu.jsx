@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './Menu.css';
 import Languages from './Languages';
 import Temperatures from './Temperatures';
+import Models from './Models';
 
 const Menu = ({
   isOpen,
@@ -9,10 +10,14 @@ const Menu = ({
   lang,
   handleLangChange,
   handleTemperature,
+  models,
+  model,
+  handleModel,
 }) => {
   return (
     <article className={`modal ${isOpen && 'is-open'}`}>
       <nav className="menu">
+        <Models models={models} model={model} handleModel={handleModel} />
         <Languages
           voices={voices}
           lang={lang}

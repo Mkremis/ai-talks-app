@@ -37,6 +37,9 @@ function App() {
     setQuery,
     handleChange,
     handleTemperature,
+    models,
+    model,
+    handleModel,
   ] = useChat();
 
   const [
@@ -81,7 +84,10 @@ function App() {
         voices={voices}
         lang={lang}
         handleLangChange={handleLangChange}
-        handleTemperature={ handleTemperature}
+        handleTemperature={handleTemperature}
+        models={models}
+        model={model}
+        handleModel={handleModel}
       />
       <div className="content">
         <article className="content-response">

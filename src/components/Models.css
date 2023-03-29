@@ -1,4 +1,4 @@
-.languages {
+.models {
   border: thin solid rgb(62, 206, 14);
   display: flex;
   flex-direction: column;
@@ -8,7 +8,7 @@
   font-family: 'Roboto', sans-serif;
   background-color: rgb(224, 233, 222);
 }
-.languages-title {
+.models-title {
   padding: 0.5rem;
 }
 select {
@@ -29,7 +29,7 @@ select {
 select::-ms-expand {
   display: none;
 }
-.select-languages {
+.select-models {
   position: relative;
   display: flex;
   width: 100%;
@@ -39,7 +39,7 @@ select::-ms-expand {
   overflow: hidden;
   border-radius: 0.25em;
 }
-.select-languages::after {
+.select-models::after {
   content: '\25BC';
   position: absolute;
   top: 0;
@@ -50,6 +50,6 @@ select::-ms-expand {
   pointer-events: none;
   transition: 0.25s all ease;
 }
-.select-languages:hover::after {
+.select-models:hover::after {
   color: #23b499;
 }

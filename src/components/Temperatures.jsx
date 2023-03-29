@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import './Temperatures.css';
 const Temperatures = ({ handleTemperature }) => {
-  const [temperature, setTemperature] = useState(2);
-  const handleRange = (e) => setTemperature(e.target.value / 10);
-  useEffect(() => {
-    handleTemperature(temperature);
-  }, [temperature]);
+  const handleRange = (e) => handleTemperature(e.target.value / 10);
+
   return (
     <section className="menu-temperature">
       <h2 className="languages-title">Selecciona la temperatura</h2>

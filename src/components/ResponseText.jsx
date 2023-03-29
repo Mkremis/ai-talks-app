@@ -19,6 +19,7 @@ const ResponseText = ({ loading, loader, response }) => {
         className="content-question__text-input"
         value={text}
         readOnly={true}
+        placeholder="Aquí veras la respuesta escrita de la IA."
       />
     </section>
   );

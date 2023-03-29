@@ -4,14 +4,13 @@
   background-color: rgb(212, 231, 207);
   top: 10vh;
   right: 0;
-  width: 70vw;
-  height: 70vh;
+  width: 50vw;
+  height: 50vh;
   display: none;
 }
 @media only screen and (min-width: 600px) {
   .modal {
     width: 20vw;
-    height: 70vh;
   }
 }
 .modal.is-open {

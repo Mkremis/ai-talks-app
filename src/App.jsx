@@ -1,5 +1,4 @@
 import 'the-new-css-reset/css/reset.css';
-import React, { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -7,7 +6,6 @@ import { Pagination } from 'swiper';
 
 import talking from './assets/talking.gif';
 import no_talking from './assets/no_talking.png';
-// import viteLogo from '/vite.svg';
 import './App.css';
 import useChat from './hooks/useChat';
 import useSpeechToText from './hooks/useSpeechToText';

@@ -7,7 +7,8 @@ const useChat = () => {
   const [response, setResponse] = useState('');
   const [temperature, setTemperature] = useState(0.2);
   const [models, setModels] = useState([]);
-  const [model, setModel] = useState('gpt-3.5-turbo');
+  const [model, setModel] = useState('text-davinci-003');
+
   const bulletReplace = (text) => {
     // Separamos el texto en líneas
     const lines = text.split('\n');
@@ -41,6 +42,7 @@ const useChat = () => {
     try {
       const listModels = await openai.listModels();
       if (listModels) {
+        console.log(listModels.data.data);
         setModels(listModels.data.data.map(({ id }) => id));
       } else {
         throw new Error();
@@ -85,6 +87,7 @@ const useChat = () => {
       setQuery(prompt);
     }
   };
+
   const handleSendQuery = () => setQuery(prompt);
   const handleChange = (e) => setPrompt(e.target.value);
 

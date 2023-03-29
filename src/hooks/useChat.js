@@ -6,7 +6,6 @@ const useChat = () => {
   const [query, setQuery] = useState(null);
   const [response, setResponse] = useState('');
   const [temperature, setTemperature] = useState(0.2);
-  const [models, setModels] = useState([]);
   const [model, setModel] = useState('text-davinci-003');
 
   const bulletReplace = (text) => {
@@ -33,24 +32,6 @@ const useChat = () => {
   };
   const handleTemperature = (temp) => setTemperature(temp);
   const handleModel = (e) => setModel(e.target.value);
-  const fetchModels = async () => {
-    const configuration = new Configuration({
-      apiKey: import.meta.env.VITE_OPENAI_API_KEY,
-      // apiKey: process.env.REACT_APP_OPENAI_API_KEY,
-    });
-    const openai = new OpenAIApi(configuration);
-    try {
-      const listModels = await openai.listModels();
-      if (listModels) {
-        console.log(listModels.data.data);
-        setModels(listModels.data.data.map(({ id }) => id));
-      } else {
-        throw new Error();
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
   const chat = async (prompt) => {
     const configuration = new Configuration({
       apiKey: import.meta.env.VITE_OPENAI_API_KEY,
@@ -76,9 +57,6 @@ const useChat = () => {
   };
 
   useEffect(() => {
-    fetchModels();
-  }, []);
-  useEffect(() => {
     if (query) chat(query);
   }, [query]);
 
@@ -102,7 +80,6 @@ const useChat = () => {
     setQuery,
     handleChange,
     handleTemperature,
-    models,
     model,
     handleModel,
   ];

@@ -10,14 +10,13 @@ const Menu = ({
   lang,
   handleLangChange,
   handleTemperature,
-  models,
   model,
   handleModel,
 }) => {
   return (
     <article className={`modal ${isOpen && 'is-open'}`}>
       <nav className="menu">
-        <Models models={models} model={model} handleModel={handleModel} />
+        <Models model={model} handleModel={handleModel} />
         <Languages
           voices={voices}
           lang={lang}

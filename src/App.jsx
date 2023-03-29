@@ -37,7 +37,6 @@ function App() {
     setQuery,
     handleChange,
     handleTemperature,
-    models,
     model,
     handleModel,
   ] = useChat();
@@ -85,7 +84,6 @@ function App() {
         lang={lang}
         handleLangChange={handleLangChange}
         handleTemperature={handleTemperature}
-        models={models}
         model={model}
         handleModel={handleModel}
       />

@@ -1,5 +1,29 @@
 {
   "name": "ai-talks-app",
+  "description": "Web app for talking and chatting with AI based on Openai API",
+  "keywords": [
+    "artifitial intelligence",
+    "AI",
+    "IA",
+    "chat",
+    "SpeechRecognition",
+    "speechSynthesis"
+  ],
+  "bugs": {
+    "url": "https://github.com/Mkremis/ai-talks-app",
+    "email": "martinkremis@gmail.com"
+  },
+  "license": "MIT",
+  "homepage": "https://majestic-sunshine-8a9316.netlify.app/",
+  "author": {
+    "name": "Martin Kremis",
+    "email": "martinkremis@gmail.com",
+    "url": "https://github.com/Mkremis"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Mkremis/ai-talks-app"
+  },
   "private": true,
   "version": "0.0.0",
   "type": "module",

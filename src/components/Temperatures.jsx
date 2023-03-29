@@ -12,7 +12,7 @@ const Temperatures = ({ handleTemperature }) => {
           <input
             type="range"
             min={0}
-            max={20}
+            max={15}
             step={1}
             defaultValue={2}
             onChange={handleRange}

@@ -4,8 +4,8 @@
   background-color: rgb(212, 231, 207);
   top: 10vh;
   right: 0;
-  width: 50vw;
-  height: 50vh;
+  width: 40vw;
+  height: 40vh;
   display: none;
 }
 @media only screen and (min-width: 600px) {

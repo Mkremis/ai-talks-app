@@ -1,5 +1,22 @@
 import { useState, useEffect } from 'react';
-const loader = 'aguarda un momento por favor';
+
+const loaders = {
+  es: 'aguarda un momento por favor',
+  en: 'wait a moment please',
+  de: 'warten Sie bitte einen Moment',
+  fr: "attendez un moment s'il vous plaît",
+  hi: 'कृपया एक पल प्रतीक्षा करें',
+  id: 'tunggu sebentar',
+  it: 'aspetta un momento perfavore',
+  ja: '少々お待ちください',
+  ko: '잠시 기다려주세요',
+  nl: 'wacht even alstublieft',
+  pl: 'proszę zaczekaj chwilę',
+  pt: 'espere um momento, por favor',
+  ru: 'Погодите секунду',
+  zh: '请等一下',
+};
+
 const useTextToSpeech = (response, setResponse, setPrompt, query, setQuery) => {
   const [speaking, setSpeaking] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -8,6 +25,7 @@ const useTextToSpeech = (response, setResponse, setPrompt, query, setQuery) => {
   const [lastResponse, setLastResponse] = useState('');
   const synth = window.speechSynthesis;
   const voices = synth.getVoices();
+
   const handleLangChange = (e) => setLang(e.target.value);
 
   // Splits a string into an array of strings with a limited size (chunk_length):
@@ -95,8 +113,8 @@ const useTextToSpeech = (response, setResponse, setPrompt, query, setQuery) => {
   //loader activation
   useEffect(() => {
     if (query && response === lastResponse) {
-      setLoading(true);
-      setSpeech(loader);
+      setLoading(loaders[lang.slice(0, 2)]);
+      setSpeech(loaders[lang.slice(0, 2)]);
     }
   }, [query, response, setLoading]);
   //speech response
@@ -112,15 +130,7 @@ const useTextToSpeech = (response, setResponse, setPrompt, query, setQuery) => {
   useEffect(() => {
     if (speech) handleSpeak(speech);
   }, [speech]);
-  return [
-    voices,
-    lang,
-    handleLangChange,
-    speaking,
-    handleStopSpeak,
-    loader,
-    loading,
-  ];
+  return [voices, lang, handleLangChange, speaking, handleStopSpeak, loading];
 };
 
 export default useTextToSpeech;

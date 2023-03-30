@@ -17,7 +17,7 @@ const Menu = ({
   return (
     <article className={`modal ${isOpen && 'is-open'}`}>
       <nav className="menu">
-        <Models model={model} handleModel={handleModel} />
+        <Models model={model} handleModel={handleModel} lang={lang} />
         <Languages
           voices={voices}
           lang={lang}
@@ -26,6 +26,7 @@ const Menu = ({
         <Temperatures
           temperature={temperature}
           handleTemperature={handleTemperature}
+          lang={lang}
         />
         <footer className="footer">
           <span>Designed By </span>

@@ -5,7 +5,9 @@ const Languages = ({ voices, lang, handleLangChange }) => {
     return (
       <section className="languages">
         <div className="languages-title">
-          <h2>Selecciona un Idioma</h2>
+          <h2>
+            {lang.includes('es') ? 'Selecciona un Idioma' : 'Select a language'}
+          </h2>
         </div>
         <div className="select-languages">
           <select

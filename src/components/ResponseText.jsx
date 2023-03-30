@@ -1,9 +1,9 @@
 import React from 'react';
 import './ResponseText.css';
-const ResponseText = ({ loading, loader, response }) => {
+const ResponseText = ({ loading, response, lang }) => {
   let text;
   if (loading) {
-    text = loader;
+    text = loading;
   } else {
     if (response) {
       text = response;
@@ -19,7 +19,11 @@ const ResponseText = ({ loading, loader, response }) => {
         className="content-question__text-input"
         value={text}
         readOnly={true}
-        placeholder="Aquí veras la respuesta escrita de la IA."
+        placeholder={
+          lang.includes('es')
+            ? 'Aquí veras la respuesta escrita de la IA'
+            : 'Here you will see the written response of the AI'
+        }
       />
     </section>
   );

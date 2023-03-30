@@ -49,9 +49,9 @@ const useChat = () => {
       } else {
         throw new Error();
       }
-    } catch (error) {
-      console.log(error);
-      setResponse('Ocurrió un error con la petición al servidor.');
+    } catch (err) {
+      console.log(err);
+      setResponse(err);
     }
   };
 

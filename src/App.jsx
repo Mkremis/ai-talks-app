@@ -40,15 +40,8 @@ function App() {
     handleModel,
   ] = useChat();
 
-  const [
-    voices,
-    lang,
-    handleLangChange,
-    speaking,
-    handleStopSpeak,
-    loader,
-    loading,
-  ] = useTextToSpeech(response, setResponse, setPrompt, query, setQuery);
+  const [voices, lang, handleLangChange, speaking, handleStopSpeak, loading] =
+    useTextToSpeech(response, setResponse, setPrompt, query, setQuery);
   const [handleStart, mic] = useSpeechToText(setPrompt, setQuery, lang);
   const [isOpen, openModal, closeModal] = useModal();
   // const startRecognition = useSpeechCommand(handleStart, setListening);
@@ -120,8 +113,8 @@ function App() {
               >
                 <ResponseText
                   loading={loading}
-                  loader={loader}
                   response={response}
+                  lang={lang}
                 />
               </SwiperSlide>
             </Swiper>
@@ -134,11 +127,7 @@ function App() {
               handleStopSpeak={handleStopSpeak}
             />
 
-            <ResponseText
-              loading={loading}
-              loader={loader}
-              response={response}
-            />
+            <ResponseText loading={loading} response={response} lang={lang} />
           </MediaQuery>
         </article>
         <article className="content-question">
@@ -171,6 +160,7 @@ function App() {
                   handleSendQuery={handleSendQuery}
                   handleChange={handleChange}
                   prompt={prompt}
+                  lang={lang}
                 />
               </SwiperSlide>
             </Swiper>

@@ -1,7 +1,7 @@
 import React from 'react';
 import './Models.css';
 
-const Models = ({ model, handleModel }) => {
+const Models = ({ model, handleModel, lang }) => {
   const models = [
     'text-davinci-003',
     'text-davinci-002',
@@ -15,7 +15,11 @@ const Models = ({ model, handleModel }) => {
   ];
   return (
     <section className="models">
-      <h2 className="models-title">Selecciona un Modelo de AI</h2>
+      <h2 className="models-title">
+        {lang.includes('es')
+          ? ' Selecciona un Modelo de IA'
+          : 'Select an AI Model'}
+      </h2>
       <div className="select-models">
         <select
           name="models"

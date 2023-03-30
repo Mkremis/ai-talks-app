@@ -37,6 +37,7 @@ const useChat = () => {
       // apiKey: process.env.REACT_APP_OPENAI_API_KEY,
     });
     const openai = new OpenAIApi(configuration);
+    console.log(model);
     try {
       const res = await openai.createCompletion({
         model,

@@ -4,14 +4,15 @@
   background-color: rgb(212, 231, 207);
   top: 10vh;
   left: 0;
-  width: 50vw;
-  height: 70vh;
+  width: 70vw;
+  height: 60vh;
   transition: transform 0.9s ease;
   transform: translate(-100%, 0);
 }
 @media only screen and (min-width: 600px) {
   .modal {
     width: 20vw;
+    height: 70vh;
   }
 }
 .modal.is-open {
@@ -19,10 +20,13 @@
   transform: translate(0, 0);
 }
 .menu {
-  height: 100%;
-  width: 100%;
+  padding-top: 0.5rem;
+  margin: auto;
+  width: 95%;
+  height: 95%;
   display: grid;
-  grid-template-rows: 1fr 1fr 1fr 0.5fr;
+  grid-template-rows: 1fr 1fr 1fr 1rem;
+  row-gap: 0.5rem;
 }
 
 .footer {

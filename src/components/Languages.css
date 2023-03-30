@@ -1,5 +1,4 @@
 .languages {
-  border: thin solid rgb(62, 206, 14);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -19,7 +18,7 @@ select {
   outline: 0;
   box-shadow: none;
   border: 0 !important;
-  background: rgb(82, 148, 66);
+  background: rgb(103, 183, 83);
   background-image: none;
   flex: 1;
   padding: 0 0.5em;

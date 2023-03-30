@@ -3,10 +3,11 @@
   z-index: 12;
   background-color: rgb(212, 231, 207);
   top: 10vh;
-  right: 0;
+  left: 0;
   width: 50vw;
-  height: 40vh;
-  display: none;
+  height: 70vh;
+  transition: transform 0.9s ease;
+  transform: translate(-100%, 0);
 }
 @media only screen and (min-width: 600px) {
   .modal {
@@ -15,10 +16,22 @@
 }
 .modal.is-open {
   display: block;
+  transform: translate(0, 0);
 }
 .menu {
   height: 100%;
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(1fr);
+  grid-template-rows: 1fr 1fr 1fr 0.5fr;
+}
+
+.footer {
+  font-family: 'Gloria Hallelujah', cursive;
+  font-size: 0.6rem;
+  margin: auto auto;
+}
+
+.footer > a:hover {
+  color: rgb(82, 148, 66);
+  font-weight: bolder;
 }

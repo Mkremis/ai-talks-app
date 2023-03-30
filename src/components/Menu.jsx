@@ -4,8 +4,6 @@ import Models from './Models';
 import Languages from './Languages';
 import Temperatures from './Temperatures';
 
-import MenuFooter from './MenuFooter';
-
 const Menu = ({
   isOpen,
   voices,
@@ -29,7 +27,12 @@ const Menu = ({
           temperature={temperature}
           handleTemperature={handleTemperature}
         />
-        {/* <MenuFooter /> */}
+        <footer className="footer">
+          <span>Designed By </span>
+          <a href="https://github.com/Mkremis" target="_blank">
+            Martin Kremis
+          </a>
+        </footer>
       </nav>
     </article>
   );

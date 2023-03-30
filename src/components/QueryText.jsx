@@ -8,6 +8,7 @@ const QueryText = ({
   prompt,
   lang,
 }) => {
+  lang = lang || 'es';
   return (
     <section className="content-question__text">
       <textarea

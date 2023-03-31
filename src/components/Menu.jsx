@@ -29,7 +29,7 @@ const Menu = ({
           lang={lang}
         />
         <footer className="footer">
-          <span>Designed By </span>
+          <span>Created by </span>
           <a href="https://github.com/Mkremis" target="_blank">
             Martin Kremis
           </a>

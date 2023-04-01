@@ -7,8 +7,8 @@ const Temperatures = ({ temperature, handleTemperature, lang }) => {
     <section className="menu-temperature">
       <h2 className="languages-title">
         {lang.includes('es')
-          ? '  Selecciona la temperatura'
-          : 'Select the temperature'}
+          ? '  Selecciona la creatividad'
+          : 'Select the creativity'}
       </h2>
       <div className="temperature-range">
         <div className="temperature-low">🤓</div>

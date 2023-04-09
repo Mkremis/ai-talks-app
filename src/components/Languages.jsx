@@ -1,15 +1,14 @@
-import React from 'react';
-import './Languages.css';
+import React from "react";
 const Languages = ({ voices, lang, handleLangChange }) => {
   if (voices.length > 0) {
     return (
-      <section className="languages">
-        <div className="languages-title">
+      <section className="menu-item">
+        <div className="menu-title">
           <h2>
-            {lang.includes('es') ? 'Selecciona un Idioma' : 'Select a language'}
+            {lang.includes("es") ? "Selecciona un Idioma" : "Select a language"}
           </h2>
         </div>
-        <div className="select-languages">
+        <div className="select">
           <select
             name="voices"
             id="voices"

@@ -1,14 +1,14 @@
-import './Temperatures.css';
+import "./Temperatures.css";
 
 const Temperatures = ({ temperature, handleTemperature, lang }) => {
   const handleRange = (e) => handleTemperature(e.target.value / 10);
 
   return (
-    <section className="menu-temperature">
-      <h2 className="languages-title">
-        {lang.includes('es')
-          ? '  Selecciona la creatividad'
-          : 'Select the creativity'}
+    <section className="menu-item">
+      <h2 className="menu-title">
+        {lang.includes("es")
+          ? "  Selecciona la creatividad"
+          : "Select the creativity"}
       </h2>
       <div className="temperature-range">
         <div className="temperature-low">🤓</div>

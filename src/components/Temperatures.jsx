@@ -1,4 +1,4 @@
-import "./Temperatures.css";
+import React from "react";
 
 const Temperatures = ({ temperature, handleTemperature, lang }) => {
   const handleRange = (e) => handleTemperature(e.target.value / 10);

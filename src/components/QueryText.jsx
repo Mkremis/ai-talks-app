@@ -1,5 +1,5 @@
-import react from 'react';
-import './QueryText.css';
+import react from "react";
+import Box from "./Box";
 
 const QueryText = ({
   handleKeyPress,
@@ -8,17 +8,17 @@ const QueryText = ({
   prompt,
   lang,
 }) => {
-  lang = lang || 'es';
+  lang = lang || "es";
   return (
-    <section className="content-question__text">
+    <Box text={true}>
       <textarea
         cols="25"
         rows="5"
-        className="content-question__text-input"
+        className="text-area"
         placeholder={
-          lang.includes('es')
-            ? 'Escribe tu pregunta o haz click en el micrófono para hablar'
-            : 'Type your question or click the microphone to speak'
+          lang.includes("es")
+            ? "Escribe tu pregunta o haz click en el micrófono para hablar"
+            : "Type your question or click the microphone to speak"
         }
         onKeyUp={handleKeyPress}
         onChange={handleChange}
@@ -27,7 +27,7 @@ const QueryText = ({
       <button onClick={handleSendQuery} className="send_query">
         <span className="material-symbols-outlined">send</span>
       </button>
-    </section>
+    </Box>
   );
 };
 export default QueryText;

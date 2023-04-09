@@ -1,5 +1,6 @@
-import React from 'react';
-import './ResponseText.css';
+import React from "react";
+import Box from "./Box";
+
 const ResponseText = ({ loading, response, lang }) => {
   let text;
   if (loading) {
@@ -8,24 +9,24 @@ const ResponseText = ({ loading, response, lang }) => {
     if (response) {
       text = response;
     } else {
-      text = '';
+      text = "";
     }
   }
   return (
-    <section className="content-response__text">
+    <Box text={true}>
       <textarea
         cols="25"
         rows="5"
-        className="content-question__text-input"
+        className="text-area"
         value={text}
         readOnly={true}
         placeholder={
-          lang.includes('es')
-            ? 'Aquí veras la respuesta escrita de la IA'
-            : 'Here you will see the written response of the AI'
+          lang.includes("es")
+            ? "Aquí veras la respuesta escrita de la IA"
+            : "Here you will see the written response of the AI"
         }
       />
-    </section>
+    </Box>
   );
 };
 export default ResponseText;

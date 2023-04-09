@@ -1,15 +1,15 @@
-import React from 'react';
-import './ResponseAvatar.css';
+import React from "react";
+import Box from "./Box";
 const ResponseAvatar = ({ speaking, talking, no_talking, handleStopSpeak }) => {
   return (
-    <section className="content-response__avatar">
+    <Box text={false}>
       <img
-        className="content-response__avatar-img"
+        className="avatar"
         src={speaking ? talking : no_talking}
         alt="Talking face"
         onClick={handleStopSpeak}
       />
-    </section>
+    </Box>
   );
 };
 export default ResponseAvatar;

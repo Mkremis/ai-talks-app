@@ -1,23 +1,49 @@
-import React from 'react';
-import './Header.css';
+import React from "react";
 
 const Header = ({ isOpen, openModal, closeModal }) => {
   const handleMenu = () => (isOpen ? closeModal() : openModal());
   return (
-    <header className="header">
-      <div className="left-header ">
+    <header
+      style={{
+        position: "relative",
+        fontFamily: "Rubik Dirt, cursive",
+        fontSize: "3rem",
+        flex: "0 0 10%",
+        width: "100%",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
+      <div
+        style={{
+          flex: "0 0 10%",
+          height: "100%",
+          textAlign: "left",
+          paddingLeft: "1rem",
+          paddingBottom: "auto",
+        }}
+      >
         <span
           className="material-symbols-outlined"
           onClick={handleMenu}
-          style={{ cursor: 'pointer' }}
+          style={{ cursor: "pointer" }}
         >
-          {isOpen ? 'Menu_open' : 'Menu'}
+          {isOpen ? "Menu_open" : "Menu"}
         </span>
       </div>
-      <div className="center-header ">
+      <div
+        style={{
+          flex: "0 0 80%",
+        }}
+      >
         <h1>AI Talks</h1>
       </div>
-      <div className="right-header"></div>
+      <div
+        style={{
+          flex: "0 0 10%",
+        }}
+      ></div>
     </header>
   );
 };

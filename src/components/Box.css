@@ -37,13 +37,13 @@
 }
 @media only screen and (min-width: 600px) {
   .box {
-    flex: 0 0 30%;
+    flex: 0 0 25%;
   }
   .box-text {
     flex: 0 0 70%;
   }
   .avatar {
-   height: 30vh;;
+   height: 25vh;
   }
   .text-area {
     height: 100%;

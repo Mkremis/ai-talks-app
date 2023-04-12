@@ -1,5 +1,7 @@
 import React from "react";
 const Languages = ({ voices, lang, handleLangChange }) => {
+  console.log('voices', voices);
+  console.log('lang', lang);
   if (voices.length > 0) {
     return (
       <section className="menu-item">

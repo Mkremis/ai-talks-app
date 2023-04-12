@@ -27,6 +27,7 @@ const Languages = ({ voices, lang, handleLangChange }) => {
             })}
           </select>
         </div>
+<p>{voice.name}</p>
       </section>
     );
   }

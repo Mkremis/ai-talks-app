@@ -25,6 +25,7 @@ const useTextToSpeech = (response, setResponse, setPrompt, query, setQuery) => {
   const [lastResponse, setLastResponse] = useState('');
   const synth = window.speechSynthesis;
   const voices = synth.getVoices();
+  console.log(SpeechSynthesisVoice);
 
   const handleLangChange = (e) => setLang(e.target.value);
 

@@ -1,3 +1,4 @@
+
 import React from "react";
 const Languages = ({ voices, lang, handleLangChange }) => {
   if (voices.length > 0) {
@@ -27,7 +28,6 @@ const Languages = ({ voices, lang, handleLangChange }) => {
             })}
           </select>
         </div>
-<p>{voice.name}</p>
       </section>
     );
   }

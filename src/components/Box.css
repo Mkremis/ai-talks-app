@@ -18,7 +18,8 @@
   justify-content: center;
 }
 .avatar {
- height: auto;
+ height: 100%;
+ width: auto;
 }
 .text-area {
   position: relative;

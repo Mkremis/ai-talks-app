@@ -18,7 +18,7 @@
   justify-content: center;
 }
 .avatar {
- height: 40vh;;
+ height: 90%;
 }
 .text-area {
   position: relative;
@@ -41,9 +41,6 @@
   }
   .box-text {
     flex: 0 0 60%;
-  }
-  .avatar {
-   height: 35vh;
   }
   .text-area {
     height: 100%;

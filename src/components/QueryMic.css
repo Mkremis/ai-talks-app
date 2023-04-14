@@ -56,12 +56,16 @@
 }
 
 #circlein {
-  width: 100px;
-  height: 100px;
+  width: unset;
+  height: unset;
   border-radius: 50%;
   background: #6bd6e1;
   box-shadow: 0px -2px 15px #e0ff94;
   position: absolute;
+}
+@media only screen and (min-width: 600px) {
+  width: 100px;
+  height: 100px;
 }
 
 .mic-icon {

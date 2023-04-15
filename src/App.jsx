@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import 'the-new-css-reset/css/reset.css';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -23,7 +24,7 @@ import QueryText from './components/QueryText';
 // import useSpeechCommand from './hooks/useSpeechCommand';
 
 function App() {
-  // const [listening, setListening] = useState(false);
+ const [vh, setVh] = useState(100%);
   const [
     handleKeyPress,
     handleSendQuery,
@@ -66,10 +67,14 @@ function App() {
       );
     },
   };
-const VH = window.innerHeight;
-  console.log(VH);
+  useEffect(() => {
+    setVh(window.innerHeight);
+     console.log(vh);
+  }, []);
+
+ 
   return (
-    <main className="App" style={{height:`${VH}px`}}>
+    <main className="App" style={{height:`${vh}px`}}>
       <Header isOpen={isOpen} openModal={openModal} closeModal={closeModal} />
       <Menu
         isOpen={isOpen}

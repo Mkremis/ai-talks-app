@@ -68,7 +68,7 @@ function App() {
   };
 const VH = window.innerHeight;
   return (
-    <main className="App" style={{height:{VH}}}>
+    <main className="App" style={{height:'100vh'}}>
       <Header isOpen={isOpen} openModal={openModal} closeModal={closeModal} />
       <Menu
         isOpen={isOpen}

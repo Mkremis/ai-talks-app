@@ -69,9 +69,8 @@ function App() {
   };
   useEffect(() => {
     setVh(window.innerHeight);
-     console.log(vh);
   }, []);
-
+  console.log(vh);
  
   return (
     <main className="App" style={{height:`${vh}px`}}>

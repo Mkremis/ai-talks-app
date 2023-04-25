@@ -5,14 +5,13 @@
   top: 10vh;
   left: 0;
   width: 70vw;
-  height: 60vh;
+  height: 70vh;
   transition: transform 0.9s ease;
   transform: translate(-100%, 0);
 }
 @media only screen and (min-width: 600px) {
   .modal {
     width: 20vw;
-    height: 70vh;
   }
 }
 .modal.is-open {
@@ -25,10 +24,11 @@
   width: 95%;
   height: 95%;
   display: grid;
-  grid-template-rows: 1fr 1fr 1fr 1rem;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1rem;
   row-gap: 0.5rem;
 }
 .menu-item {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;

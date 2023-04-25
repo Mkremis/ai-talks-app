@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
 import './Menu.css';
 import Models from './Models';
 import Languages from './Languages';
 import Temperatures from './Temperatures';
+import Avatars from './Avatars';
+
 
 const Menu = ({
   isOpen,
@@ -13,6 +14,10 @@ const Menu = ({
   handleTemperature,
   model,
   handleModel,
+  AVATARS,
+  avatar,
+  handleNextAvatar,
+  handlePrevAvatar
 }) => {
   return (
     <article className={`modal ${isOpen && 'is-open'}`}>
@@ -28,6 +33,10 @@ const Menu = ({
           handleTemperature={handleTemperature}
           lang={lang}
         />
+        <Avatars  lang={lang} AVATARS={AVATARS}
+        avatar={avatar}
+        handleNextAvatar={handleNextAvatar}
+        handlePrevAvatar={handlePrevAvatar}/>
         <footer className="footer">
           <span>Created by </span>
           <a href="https://github.com/Mkremis" target="_blank">

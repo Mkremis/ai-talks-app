@@ -5,8 +5,6 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import { Pagination } from 'swiper';
 
-import talking from './assets/talking.gif';
-import no_talking from './assets/no_talking.png';
 import './App.css';
 import useChat from './hooks/useChat';
 import useSpeechToText from './hooks/useSpeechToText';
@@ -20,6 +18,7 @@ import ResponseAvatar from './components/ResponseAvatar';
 import ResponseText from './components/ResponseText';
 import QueryMic from './components/QueryMic';
 import QueryText from './components/QueryText';
+import useAvatar from './hooks/useAvatar';
 
 // import useSpeechCommand from './hooks/useSpeechCommand';
 
@@ -69,7 +68,7 @@ function App() {
   };
   
  const VH = window.innerHeight;
-
+ const {AVATARS, avatar, handleNextAvatar, handlePrevAvatar}=useAvatar();
  
   return (
     <main className="App" style={{height:`${VH}px`}}>
@@ -83,6 +82,10 @@ function App() {
         handleTemperature={handleTemperature}
         model={model}
         handleModel={handleModel}
+        AVATARS={AVATARS}
+        avatar={avatar}
+        handleNextAvatar={handleNextAvatar}
+        handlePrevAvatar={handlePrevAvatar}
       />
       <div className="content">
         <article className="content-response">
@@ -102,8 +105,8 @@ function App() {
               >
                 <ResponseAvatar
                   speaking={speaking}
-                  talking={talking}
-                  no_talking={no_talking}
+                  talking={`/${AVATARS[avatar]}-talking.gif`}
+                  no_talking={`/${AVATARS[avatar]}-no_talking.png`}
                   handleStopSpeak={handleStopSpeak}
                 />
               </SwiperSlide>
@@ -126,8 +129,8 @@ function App() {
           <MediaQuery query="(min-width: 600px)">
             <ResponseAvatar
               speaking={speaking}
-              talking={talking}
-              no_talking={no_talking}
+              talking={`/${AVATARS[avatar]}-talking.gif`}
+              no_talking={`/${AVATARS[avatar]}-no_talking.png`}
               handleStopSpeak={handleStopSpeak}
             />
 

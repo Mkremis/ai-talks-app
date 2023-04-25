@@ -1,5 +1,5 @@
 import { useState } from 'react';
-const AVATARS=['blond', 'header', 'jenny']
+const AVATARS=['blond', 'header', 'jenny', 'nataly']
 const useAvatar =()=>{
     const [avatar, setAvatar]=useState(0)
 

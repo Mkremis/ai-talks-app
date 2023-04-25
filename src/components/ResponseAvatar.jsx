@@ -1,8 +1,8 @@
-import React from "react";
+import React from "react"; 
 import Box from "./Box";
-const ResponseAvatar = ({ speaking, talking, no_talking, handleStopSpeak }) => {
+const ResponseAvatar = ({ speaking, talking, no_talking, handleStopSpeak, avatar }) => {
   return (
-    <Box text={false}>
+    <Box text={false} avatar={avatar}>
       <img
         className="avatar"
         src={speaking ? talking : no_talking}

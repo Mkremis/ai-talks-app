@@ -104,6 +104,7 @@ function App() {
                 }}
               >
                 <ResponseAvatar
+                  avatar={AVATARS[avatar]}
                   speaking={speaking}
                   talking={`/${AVATARS[avatar]}-talking.gif`}
                   no_talking={`/${AVATARS[avatar]}-no_talking.png`}
@@ -128,6 +129,7 @@ function App() {
           </MediaQuery>
           <MediaQuery query="(min-width: 600px)">
             <ResponseAvatar
+              avatar={AVATARS[avatar]}
               speaking={speaking}
               talking={`/${AVATARS[avatar]}-talking.gif`}
               no_talking={`/${AVATARS[avatar]}-no_talking.png`}

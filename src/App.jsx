@@ -10,6 +10,7 @@ import useChat from './hooks/useChat';
 import useSpeechToText from './hooks/useSpeechToText';
 import useTextToSpeech from './hooks/useTextToSpeech';
 import useModal from './hooks/useModal';
+import useWindowSize from './hooks/useWindowSize';
 
 import MediaQuery from 'react-responsive';
 import Header from './components/Header';
@@ -23,7 +24,7 @@ import useAvatar from './hooks/useAvatar';
 // import useSpeechCommand from './hooks/useSpeechCommand';
 
 function App() {
-const VH = window.innerHeight;
+const size = useWindowSize();
 
   const [
     handleKeyPress,
@@ -71,7 +72,7 @@ const VH = window.innerHeight;
  const {AVATARS, avatar, handleNextAvatar, handlePrevAvatar}=useAvatar();
  
   return (
-    <main className="App" style={{height:`${VH}px`}}>
+    <main className="App" style={{height:`${size.height}px`}}>
       <Header isOpen={isOpen} openModal={openModal} closeModal={closeModal} />
       <Menu
         isOpen={isOpen}

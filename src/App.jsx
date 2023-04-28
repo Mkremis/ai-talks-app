@@ -68,8 +68,8 @@ const size = useWindowSize();
     },
   };
   
- const VH = window.innerHeight;
- const {AVATARS, avatar, handleNextAvatar, handlePrevAvatar}=useAvatar();
+
+ const {AVATARS, avatarIndex, handleNextAvatar, handlePrevAvatar}=useAvatar();
  
   return (
     <main className="App" style={{height:`${size.height}px`}}>

@@ -23,7 +23,9 @@ const Temperatures = ({ temperature, handleTemperature, lang }) => {
             className="custom-slider"
           />
         </div>
-        <div className="temperature-high">🧑‍🎨</div>
+        <div className="temperature-high">
+          <img src="./public/person-artist-48.png" alt="artist" style={{width:'1rem', height:'1rem'}} />
+        </div>
       </div>
     </section>
   );

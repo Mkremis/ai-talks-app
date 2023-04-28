@@ -104,7 +104,6 @@ select::-ms-expand {
 }
 .temperature-low, 
 .temperature-high {
-  font-size: 1rem;
   flex: 0 0 10%;
 }
 .temperature-selector {

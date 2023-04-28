@@ -23,7 +23,7 @@ import useAvatar from './hooks/useAvatar';
 // import useSpeechCommand from './hooks/useSpeechCommand';
 
 function App() {
-const [vHeigth, setVHeight] = useState (window.innerHeight);
+let vHeigth = window.innerHeight;
   const [
     handleKeyPress,
     handleSendQuery,

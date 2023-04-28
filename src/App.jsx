@@ -18,13 +18,12 @@ import ResponseAvatar from './components/ResponseAvatar';
 import ResponseText from './components/ResponseText';
 import QueryMic from './components/QueryMic';
 import QueryText from './components/QueryText';
-import useAvatar from './hooks/useAvatar';
+import { ContextProvider } from './context/GlobalContext';
 
-// import useSpeechCommand from './hooks/useSpeechCommand';
+
+
 
 function App() {
-const size = useWindowSize();
-
   const [
     handleKeyPress,
     handleSendQuery,
@@ -45,15 +44,7 @@ const size = useWindowSize();
     useTextToSpeech(response, setResponse, setPrompt, query, setQuery);
   const [handleStart, mic] = useSpeechToText(setPrompt, setQuery, lang);
   const [isOpen, openModal, closeModal] = useModal();
-  // const startRecognition = useSpeechCommand(handleStart, setListening);
 
-  // useEffect(() => {
-  //   if (!query && !speaking && !mic && !loading) setListening(true);
-  // }, [query, speaking, mic, loading]);
-
-  // useEffect(() => {
-  //   if (listening) startRecognition();
-  // }, [listening]);
   const pagination = {
     clickable: true,
     renderBullet: function (index, className) {
@@ -68,12 +59,13 @@ const size = useWindowSize();
     },
   };
   
-
- const {AVATARS, avatarIndex, handleNextAvatar, handlePrevAvatar}=useAvatar();
+ const size = useWindowSize();
  
   return (
+    <ContextProvider>
     <main className="App" style={{height:`${size.height}px`}}>
       <Header isOpen={isOpen} openModal={openModal} closeModal={closeModal} />
+      
       <Menu
         isOpen={isOpen}
         voices={voices}
@@ -83,11 +75,8 @@ const size = useWindowSize();
         handleTemperature={handleTemperature}
         model={model}
         handleModel={handleModel}
-        AVATARS={AVATARS}
-        avatarIndex={avatarIndex}
-        handleNextAvatar={handleNextAvatar}
-        handlePrevAvatar={handlePrevAvatar}
       />
+    
       <div className="content">
         <article className="content-response">
           <MediaQuery query="(max-width: 600px)">
@@ -105,10 +94,7 @@ const size = useWindowSize();
                 }}
               >
                 <ResponseAvatar
-                  avatar={AVATARS[avatarIndex]}
                   speaking={speaking}
-                  talking={`/${AVATARS[avatarIndex]}-talking.gif`}
-                  no_talking={`/${AVATARS[avatarIndex]}-no_talking.png`}
                   handleStopSpeak={handleStopSpeak}
                 />
               </SwiperSlide>
@@ -130,10 +116,7 @@ const size = useWindowSize();
           </MediaQuery>
           <MediaQuery query="(min-width: 600px)">
             <ResponseAvatar
-              avatar={AVATARS[avatarIndex]}
               speaking={speaking}
-              talking={`/${AVATARS[avatarIndex]}-talking.gif`}
-              no_talking={`/${AVATARS[avatarIndex]}-no_talking.png`}
               handleStopSpeak={handleStopSpeak}
             />
 
@@ -188,6 +171,7 @@ const size = useWindowSize();
       </div>
       <button id="fakeButton" hidden={true}></button>
     </main>
+    </ContextProvider>
   );
 }
 

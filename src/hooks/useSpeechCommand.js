@@ -19,7 +19,7 @@ const useSpeechCommand = (handleStart, setListening) => {
   recognition.onresult = (event) => {
     let result = event.results[event.results.length - 1][0].transcript;
     result.trim().toLowerCase();
-    console.log(result);
+    // console.log(result);
     if (result.includes(command)) {
       recognition.abort();
       handleStart();

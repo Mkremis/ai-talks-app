@@ -33,10 +33,7 @@ const Menu = ({
           handleTemperature={handleTemperature}
           lang={lang}
         />
-        <Avatars  lang={lang} AVATARS={AVATARS}
-        avatarIndex={avatarIndex}
-        handleNextAvatar={handleNextAvatar}
-        handlePrevAvatar={handlePrevAvatar}/>
+        <Avatars  lang={lang} />
         <footer className="footer">
           <span>Created by </span>
           <a href="https://github.com/Mkremis" target="_blank">

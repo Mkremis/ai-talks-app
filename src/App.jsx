@@ -1,4 +1,4 @@
-
+import { useState, useEffect } from 'react';
 import 'the-new-css-reset/css/reset.css';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -23,7 +23,7 @@ import useAvatar from './hooks/useAvatar';
 // import useSpeechCommand from './hooks/useSpeechCommand';
 
 function App() {
-
+const [vHeigth, setVHeight] = useState (window.innerHeight);
   const [
     handleKeyPress,
     handleSendQuery,
@@ -67,11 +67,10 @@ function App() {
     },
   };
   
- const VH = window.innerHeight;
  const {AVATARS, avatar, handleNextAvatar, handlePrevAvatar}=useAvatar();
  
   return (
-    <main className="App" style={{height:`${VH}px`}}>
+    <main className="App" style={{height:`${vHeight}px`}}>
       <Header isOpen={isOpen} openModal={openModal} closeModal={closeModal} />
       <Menu
         isOpen={isOpen}

@@ -24,7 +24,7 @@ const Temperatures = ({ temperature, handleTemperature, lang }) => {
           />
         </div>
         <div className="temperature-high">
-          <img src="./public/person-artist-48.png" alt="artist" style={{width:'1rem', height:'1rem'}} />
+          <img src="./person-artist-48.png" alt="artist" style={{width:'1rem', height:'1rem'}} />
         </div>
       </div>
     </section>

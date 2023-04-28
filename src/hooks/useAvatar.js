@@ -1,15 +1,15 @@
 import { useState } from 'react';
 const AVATARS=['blond', 'header', 'jenny', 'nataly']
 const useAvatar =()=>{
-    const [avatar, setAvatar]=useState(0)
+    const [avatarIndex, setAvatarIndex]=useState(0)
 
     const handleNextAvatar=()=>{
-    avatar === AVATARS.length-1 ?setAvatar(0) :setAvatar(avatar+1)
+    avatarIndex === AVATARS.length-1 ?setAvatarIndex(0) :setAvatarIndex(avatarIndex+1)
     };
     const handlePrevAvatar=()=>{
-      avatar === 0 ?setAvatar(AVATARS.length-1) :setAvatar(avatar-1)
+      avatarIndex === 0 ?setAvatarIndex(AVATARS.length-1) :setAvatarIndex(avatarIndex-1)
       };
 
-return{AVATARS, avatar, handleNextAvatar, handlePrevAvatar}
+return{AVATARS, avatarIndex, handleNextAvatar, handlePrevAvatar}
 }
 export default useAvatar;

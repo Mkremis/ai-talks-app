@@ -15,7 +15,7 @@ const Menu = ({
   model,
   handleModel,
   AVATARS,
-  avatar,
+  avatarIndex,
   handleNextAvatar,
   handlePrevAvatar
 }) => {
@@ -34,7 +34,7 @@ const Menu = ({
           lang={lang}
         />
         <Avatars  lang={lang} AVATARS={AVATARS}
-        avatar={avatar}
+        avatarIndex={avatarIndex}
         handleNextAvatar={handleNextAvatar}
         handlePrevAvatar={handlePrevAvatar}/>
         <footer className="footer">

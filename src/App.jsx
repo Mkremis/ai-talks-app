@@ -1,4 +1,3 @@
-
 import 'the-new-css-reset/css/reset.css';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -69,6 +68,7 @@ const size = useWindowSize();
     },
   };
   
+ const VH = window.innerHeight;
  const {AVATARS, avatar, handleNextAvatar, handlePrevAvatar}=useAvatar();
  
   return (
@@ -84,7 +84,7 @@ const size = useWindowSize();
         model={model}
         handleModel={handleModel}
         AVATARS={AVATARS}
-        avatar={avatar}
+        avatarIndex={avatarIndex}
         handleNextAvatar={handleNextAvatar}
         handlePrevAvatar={handlePrevAvatar}
       />
@@ -105,10 +105,10 @@ const size = useWindowSize();
                 }}
               >
                 <ResponseAvatar
-                  avatar={AVATARS[avatar]}
+                  avatar={AVATARS[avatarIndex]}
                   speaking={speaking}
-                  talking={`/${AVATARS[avatar]}-talking.gif`}
-                  no_talking={`/${AVATARS[avatar]}-no_talking.png`}
+                  talking={`/${AVATARS[avatarIndex]}-talking.gif`}
+                  no_talking={`/${AVATARS[avatarIndex]}-no_talking.png`}
                   handleStopSpeak={handleStopSpeak}
                 />
               </SwiperSlide>
@@ -130,10 +130,10 @@ const size = useWindowSize();
           </MediaQuery>
           <MediaQuery query="(min-width: 600px)">
             <ResponseAvatar
-              avatar={AVATARS[avatar]}
+              avatar={AVATARS[avatarIndex]}
               speaking={speaking}
-              talking={`/${AVATARS[avatar]}-talking.gif`}
-              no_talking={`/${AVATARS[avatar]}-no_talking.png`}
+              talking={`/${AVATARS[avatarIndex]}-talking.gif`}
+              no_talking={`/${AVATARS[avatarIndex]}-no_talking.png`}
               handleStopSpeak={handleStopSpeak}
             />
 

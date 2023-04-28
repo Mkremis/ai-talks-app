@@ -1,5 +1,5 @@
 import React from "react";
-const Avatars = ({lang, AVATARS, avatar, handleNextAvatar, handlePrevAvatar}) => {
+const Avatars = ({lang, AVATARS, avatarIndex, handleNextAvatar, handlePrevAvatar}) => {
   
   return (
     <section className="menu-item">
@@ -11,7 +11,7 @@ const Avatars = ({lang, AVATARS, avatar, handleNextAvatar, handlePrevAvatar}) =>
       <div className="avatar-selector" style={{paddingBottom:'1rem',width:"100%",display:"flex", justifyContent:"center", alignItems:"center"}}>
         <div className="avatar-selector_prev" style={{cursor:"pointer",flexBasis:'20%', fontSize:"2rem"}} onClick={handlePrevAvatar}>◀</div>
         <div className="avatar-selector_current style={{flexBasis:'60%'}}">
-         <img src={`/${AVATARS[avatar]}-no_talking.png`} alt="current avatar" style={{width:"80px"}}/>
+         <img src={`/${AVATARS[avatarIndex]}-no_talking.png`} alt="current avatar" style={{width:"80px"}}/>
         </div>
         <div className="avatar-selector_next" style={{cursor:"pointer",flexBasis:'20%', fontSize:"1.5rem"}} onClick={handleNextAvatar}>▶</div>
       </div>

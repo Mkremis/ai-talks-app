@@ -3,7 +3,6 @@ import React, { useContext } from "react";
 import GlobalContext from "../context/GlobalContext";
 const Avatars = ({lang}) => {
  const {AVATARS, avatarIndex, handleNextAvatar, handlePrevAvatar} = useContext(GlobalContext)
- console.log(avatarIndex)
   return (
     <section className="menu-item">
       <h2 className="menu-title">

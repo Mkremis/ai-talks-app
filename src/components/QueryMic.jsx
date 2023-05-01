@@ -12,9 +12,9 @@ const QueryMic = ({ handleStart, micIsActive, theme }) => {
             id="delayed"
           ></div>
           <div className="button"></div>
-          <div className="button" id="circlein">
+          <div className={`button-${theme}`}>
             <svg
-              className="mic-icon"
+              className={`mic-icon-${theme}`}
               version="1.1"
               xmlns="http://www.w3.org/2000/svg"
               xlinkHref="http://www.w3.org/1999/xlink"

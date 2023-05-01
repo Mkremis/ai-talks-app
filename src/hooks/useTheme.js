@@ -7,4 +7,4 @@ const useTheme =()=>{
 
 return{theme, THEMES, handleThemeChange}
 }
-export default useTheme;
+export default useTheme; 

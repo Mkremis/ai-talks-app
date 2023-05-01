@@ -3,14 +3,16 @@ import Box from "./Box";
 import GlobalContext from "../context/GlobalContext";
 
 const ResponseAvatar = ({ speaking, handleStopSpeak, theme }) => {
-  const {AVATARS, avatarIndex} = useContext(GlobalContext)
-  const initialAvatar = `/${AVATARS[avatarIndex]}-no_talking.png`
+  const {AVATARS, avatarIndex} = useContext(GlobalContext);
+  const initialAvatar = `/${AVATARS[theme][avatarIndex]}-no_talking.png`
   const [currentAvatar, setCurrentAvatar]=useState(initialAvatar)
+
   useEffect(()=>{
 speaking
-?setCurrentAvatar(`/${AVATARS[avatarIndex]}-talking.gif`)
-:setCurrentAvatar(`/${AVATARS[avatarIndex]}-no_talking.png`)
-  },[speaking, setCurrentAvatar, avatarIndex])
+?setCurrentAvatar(`/${AVATARS[theme][avatarIndex]}-talking.gif`)
+:setCurrentAvatar(`/${AVATARS[theme][avatarIndex]}-no_talking.png`)
+  },[speaking, setCurrentAvatar, avatarIndex, theme]);
+
  const avatarStyle = theme==='modern' 
  ?{
   width: '100%',

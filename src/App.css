@@ -27,12 +27,13 @@ body {
     flex-direction: column;
   }
   .content > * {
-    padding: 1rem;
+    padding: unset;
   }
 }
 
 
 .content-response_mobile-green, .content-question_mobile-green {
+  padding: 1rem;
   flex: 0 0 50%;
   display: flex;
   flex-direction: column;
@@ -40,14 +41,13 @@ body {
   justify-content: center;
 }
 .content-response_mobile-modern {
-  flex: 1 0 80%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
 }
 .content-question_mobile-modern {
-  /* flex: 0 0 20%; */
+   flex: 0 0 10%; 
   display: flex;
   flex-direction: column;
   align-items: flex-start;

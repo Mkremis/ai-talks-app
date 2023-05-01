@@ -19,14 +19,30 @@
   animation-iteration-count: infinite;
 }
 
-.button {
-  width: 80px;
-  height: 80px;
+.button-modern {
+  width: 3rem;
+  height: 3rem;
   border-radius: 50%;
   background: #50cddd;
   box-shadow: 0px 0px 80px #0084f9;
   position: absolute;
 }
+.button-green{
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: #6bd6e1;
+  box-shadow: 0px -2px 15px #e0ff94;
+  position: absolute;
+}
+/* #circlein {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: #6bd6e1;
+  box-shadow: 0px -2px 15px #e0ff94;
+  position: absolute;
+} */
 
 @keyframes pulse {
   0% {
@@ -55,17 +71,15 @@
   animation-delay: 1.5s;
 }
 
-#circlein {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  background: #6bd6e1;
-  box-shadow: 0px -2px 15px #e0ff94;
-  position: absolute;
-}
 
-.mic-icon {
+
+.mic-icon-green {
   height: 60px;
+  position: relative;
+  margin-top: 20%;
+}
+.mic-icon-modern {
+  height: 30px;
   position: relative;
   margin-top: 20%;
 }

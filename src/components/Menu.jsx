@@ -34,7 +34,7 @@ const Menu = ({
           handleTemperature={handleTemperature}
           lang={lang}
         />
-        <Avatars  lang={lang} />
+        <Avatars  lang={lang} theme={theme}/>
         <footer className="footer">
           <span>Created by </span>
           <a href="https://github.com/Mkremis" target="_blank">

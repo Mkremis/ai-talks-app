@@ -3,6 +3,7 @@ import Models from './Models';
 import Languages from './Languages';
 import Temperatures from './Temperatures';
 import Avatars from './Avatars';
+import Theme from './Theme';
 
 
 const Menu = ({
@@ -14,14 +15,14 @@ const Menu = ({
   handleTemperature,
   model,
   handleModel,
-  AVATARS,
-  avatarIndex,
-  handleNextAvatar,
-  handlePrevAvatar
+  theme,
+  THEMES,
+  handleThemeChange
 }) => {
   return (
     <article className={`modal ${isOpen && 'is-open'}`}>
       <nav className="menu">
+        <Theme lang={lang} theme={theme} THEMES={THEMES} handleThemeChange={handleThemeChange}/>
         <Models model={model} handleModel={handleModel} lang={lang} />
         <Languages
           voices={voices}

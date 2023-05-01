@@ -19,11 +19,13 @@ import ResponseText from './components/ResponseText';
 import QueryMic from './components/QueryMic';
 import QueryText from './components/QueryText';
 import { ContextProvider } from './context/GlobalContext';
+import useTheme from './hooks/useTheme';
 
 
 
 
 function App() {
+  const {theme, THEMES, handleThemeChange} = useTheme()
   const [
     handleKeyPress,
     handleSendQuery,
@@ -63,9 +65,8 @@ function App() {
  
   return (
     <ContextProvider>
-    <main className="App" style={{height:`${size.height}px`}}>
+    <main className={`app app-${theme}`} style={{height:`${size.height}px`}}>
       <Header isOpen={isOpen} openModal={openModal} closeModal={closeModal} />
-      
       <Menu
         isOpen={isOpen}
         voices={voices}
@@ -75,6 +76,9 @@ function App() {
         handleTemperature={handleTemperature}
         model={model}
         handleModel={handleModel}
+        theme={theme}
+        THEMES={THEMES}
+        handleThemeChange={handleThemeChange}
       />
     
       <div className="content">

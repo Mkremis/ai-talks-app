@@ -8,7 +8,7 @@ const Header = ({ isOpen, openModal, closeModal }) => {
         position: "relative",
         fontFamily: "Rubik Dirt, cursive",
         fontSize: "2rem",
-        flex: "0 0 10%",
+        flex: "0 0 5%",
         width: "100%",
         display: "flex",
         alignItems: "center",

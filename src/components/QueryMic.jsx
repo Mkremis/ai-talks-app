@@ -1,9 +1,9 @@
 import React from "react";
 import Box from "./Box";
 import "./QueryMic.css";
-const QueryMic = ({ handleStart, micIsActive }) => {
+const QueryMic = ({ handleStart, micIsActive, theme }) => {
   return (
-    <Box text={false}>
+    <Box text={false}  theme={theme}>
       <div style={{ position: "relative" }} onClick={handleStart}>
         <div className="object">
           <div className={`outline ${micIsActive && "animate"}`}></div>

@@ -1,8 +1,8 @@
 import React from "react";
 import "./Box.css";
 
-const Box = ({ children, text}) => {
+const Box = ({ children, text, theme}) => {
 
-  return <div style={{ backgroundColor: 'rgb(82, 148, 66)'}} className={text ? "box-text" : "box"}>{children}</div>;
+  return <div className={text ? "box-text" : `box box-${theme}`}>{children}</div>;
 };
 export default Box;

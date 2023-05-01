@@ -6,7 +6,7 @@ const Theme = ({lang, theme, THEMES, handleThemeChange}) => {
       <section className="menu-item">
         <div className="menu-title">
           <h2>
-            {lang.includes("es") ? "Selecciona la apariencia" : "Select the appearance"}
+            {lang.includes("es") ? "Selecciona el tema" : "Select the theme"}
           </h2>
         </div>
         <div className="select">

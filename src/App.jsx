@@ -82,8 +82,9 @@ function App() {
       />
     
       <div className="content">
-        <article className="content-response">
+        
           <MediaQuery query="(max-width: 600px)">
+          <article className={`content-response_mobile-${theme}`}>
             <Swiper
               pagination={pagination}
               modules={[Pagination]}
@@ -99,7 +100,8 @@ function App() {
               >
                 <ResponseAvatar
                   speaking={speaking}
-                  handleStopSpeak={handleStopSpeak}
+                  handleStopSpeak={handleStopSpeak} 
+                  theme={theme}
                 />
               </SwiperSlide>
               <SwiperSlide
@@ -114,21 +116,27 @@ function App() {
                   loading={loading}
                   response={response}
                   lang={lang}
+                  theme={theme}
                 />
               </SwiperSlide>
             </Swiper>
+            </article>
           </MediaQuery>
           <MediaQuery query="(min-width: 600px)">
+          <article className="content-response_desktop">
             <ResponseAvatar
               speaking={speaking}
               handleStopSpeak={handleStopSpeak}
+              theme={theme}
             />
 
-            <ResponseText loading={loading} response={response} lang={lang} />
+            <ResponseText loading={loading} response={response} lang={lang} theme={theme} />
+            </article>
           </MediaQuery>
-        </article>
-        <article className="content-question">
+       
+       
           <MediaQuery query="(max-width: 600px)">
+          <article className={`content-question_mobile-${theme}`}>
             <Swiper
               pagination={pagination}
               modules={[Pagination]}
@@ -142,7 +150,7 @@ function App() {
                   justifyContent: 'center',
                 }}
               >
-                <QueryMic handleStart={handleStart} micIsActive={mic} />
+                <QueryMic handleStart={handleStart} micIsActive={mic} theme={theme}/>
               </SwiperSlide>
               <SwiperSlide
                 style={{
@@ -158,20 +166,25 @@ function App() {
                   handleChange={handleChange}
                   prompt={prompt}
                   lang={lang}
+                  theme={theme}
                 />
               </SwiperSlide>
             </Swiper>
+            </article>
           </MediaQuery>
           <MediaQuery query="(min-width: 600px)">
-            <QueryMic handleStart={handleStart} micIsActive={mic} />
+          <article className="content-question_desktop">
+            <QueryMic handleStart={handleStart} micIsActive={mic} theme={theme}/>
             <QueryText
               handleKeyPress={handleKeyPress}
               handleSendQuery={handleSendQuery}
               handleChange={handleChange}
               prompt={prompt}
+              theme={theme}
             />
+             </article>
           </MediaQuery>
-        </article>
+       
       </div>
       <button id="fakeButton" hidden={true}></button>
     </main>

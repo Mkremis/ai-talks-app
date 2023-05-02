@@ -63,6 +63,14 @@ function App() {
   };
   
  const size = useWindowSize();
+ const styleQueryMobile = {
+  modern:{
+    height:`${size.height * 0.2}px`,
+  },
+green:
+{
+},
+ }
 
  
   return (
@@ -138,7 +146,8 @@ function App() {
        
        
           <MediaQuery query="(max-width: 600px)">
-          <article className={`content-question_mobile-${theme}`}>
+          <article className={`content-question_mobile-${theme}`} style={styleQueryMobile[theme]}>
+        
             <Swiper
               pagination={pagination}
               modules={[Pagination]}

@@ -63,23 +63,6 @@ function App() {
   };
   
  const size = useWindowSize();
- const responseStyles = {
-  green:{
-    padding: '1rem',
-    flexBasis: `${size.height/2}px`,
-    // display: 'flex',
-    // flexDirection: 'column',
-    // alignItems: 'flex-start',
-    // justifyContent: 'center',
-  },
-  modern:{
-    flexBasis: `${size.height*0.8}px`,
-    // display: 'flex',
-    // flexDirection: 'column',
-    // alignItems: 'flex-start',
-    // justifyContent: 'center',
-  },
-  };
 
  
   return (
@@ -103,7 +86,7 @@ function App() {
       <div className="content">
         
           <MediaQuery query="(max-width: 600px)">
-          <article className={`content-response_mobile-${theme}`} style={responseStyles[theme]}>
+          <article className={`content-response_mobile-${theme}`} >
             <Swiper
               pagination={pagination}
               modules={[Pagination]}

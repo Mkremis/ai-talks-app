@@ -4,7 +4,7 @@ import "./QueryMic.css";
 const QueryMic = ({ handleStart, micIsActive, theme }) => {
   return (
     <Box text={false}  theme={theme}>
-      <div style={{ position: "relative" }} onClick={handleStart}>
+      <div className={`mic-container-${theme}`} style={{ position: "relative" }} onClick={handleStart}>
         <div className="object">
           <div className={`outline ${micIsActive && "animate"}`}></div>
           <div

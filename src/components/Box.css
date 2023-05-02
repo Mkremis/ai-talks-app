@@ -23,12 +23,7 @@
   align-items: center;
   justify-content: center;
 }
-.avatar {
- height: 65%;
- width: auto;
- max-width: 300px;
- max-height: 169px;
-}
+
 .text-area {
   position: relative;
   flex: 0 0 100%;
@@ -55,10 +50,6 @@
   .text-area {
     height: 100%;
   }
-  .avatar {
- height: 100%;
- width: auto;
-}
 }
 
 .send_query {

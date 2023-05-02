@@ -13,21 +13,14 @@ speaking
 :setCurrentAvatar(`/${AVATARS[theme][avatarIndex]}-no_talking.png`)
   },[speaking, setCurrentAvatar, avatarIndex, theme]);
 
- const avatarStyle = theme==='modern' 
- ?{
-  width: '100%',
-  height: 'auto',
-  maxWidth: 'unset',
-  maxHeight: 'unset'
- }
- :{}
+ 
   return (
     <Box text={false} theme={theme}>
       <img
         className="avatar"
         src={currentAvatar}
         alt="Talking face"
-        style={avatarStyle}
+        style={{ objectFit: 'cover'}}
         onClick={handleStopSpeak}
       />
     </Box>

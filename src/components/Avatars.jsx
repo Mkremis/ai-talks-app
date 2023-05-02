@@ -1,8 +1,7 @@
-import React, { useContext } from "react";
-import GlobalContext from "../context/GlobalContext";
+import React from "react";
 
-const Avatars = ({lang, theme}) => {
- const {AVATARS, avatarIndex, handleNextAvatar, handlePrevAvatar} = useContext(GlobalContext)
+
+const Avatars = ({lang, theme, AVATARS, avatarIndex, handleNextAvatar, handlePrevAvatar}) => {
   return (
     <section className="menu-item">
       <h2 className="menu-title">

@@ -1,9 +1,7 @@
-import React, { useEffect, useState, useContext } from "react"; 
+import React, { useEffect, useState} from "react"; 
 import Box from "./Box";
-import GlobalContext from "../context/GlobalContext";
 
-const ResponseAvatar = ({ speaking, handleStopSpeak, theme }) => {
-  const {AVATARS, avatarIndex} = useContext(GlobalContext);
+const ResponseAvatar = ({ speaking, handleStopSpeak, theme, AVATARS, avatarIndex }) => {
   const initialAvatar = `/${AVATARS[theme][avatarIndex]}-no_talking.png`
   const [currentAvatar, setCurrentAvatar]=useState(initialAvatar)
 

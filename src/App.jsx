@@ -18,15 +18,12 @@ import ResponseAvatar from './components/ResponseAvatar';
 import ResponseText from './components/ResponseText';
 import QueryMic from './components/QueryMic';
 import QueryText from './components/QueryText';
-import { ContextProvider } from './context/GlobalContext';
 import useTheme from './hooks/useTheme';
-import Theme from './components/Theme';
-
-
-
+import useAvatar from './hooks/useAvatar';
 
 function App() {
   const {theme, THEMES, handleThemeChange} = useTheme()
+  const{AVATARS, avatarIndex, handleNextAvatar, handlePrevAvatar}=useAvatar({theme})
   const [
     handleKeyPress,
     handleSendQuery,
@@ -74,7 +71,6 @@ green:
 
  
   return (
-    <ContextProvider>
     <main className={`app app-${theme}`} style={{height:`${size.height}px`}}>
       <Header isOpen={isOpen} openModal={openModal} closeModal={closeModal} />
       <Menu
@@ -89,6 +85,10 @@ green:
         theme={theme}
         THEMES={THEMES}
         handleThemeChange={handleThemeChange}
+        AVATARS={AVATARS} 
+        avatarIndex={avatarIndex} 
+        handleNextAvatar={handleNextAvatar}
+        handlePrevAvatar={handlePrevAvatar}
       />
     
       <div className="content">
@@ -112,6 +112,8 @@ green:
                   speaking={speaking}
                   handleStopSpeak={handleStopSpeak} 
                   theme={theme}
+                  AVATARS={AVATARS} 
+                  avatarIndex={avatarIndex} 
                 />
               </SwiperSlide>
               <SwiperSlide
@@ -138,6 +140,8 @@ green:
               speaking={speaking}
               handleStopSpeak={handleStopSpeak}
               theme={theme}
+              AVATARS={AVATARS} 
+              avatarIndex={avatarIndex} 
             />
 
             <ResponseText loading={loading} response={response} lang={lang} theme={theme} />
@@ -199,7 +203,6 @@ green:
       </div>
       <button id="fakeButton" hidden={true}></button>
     </main>
-    </ContextProvider>
   );
 }
 

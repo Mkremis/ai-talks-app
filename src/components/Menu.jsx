@@ -17,7 +17,12 @@ const Menu = ({
   handleModel,
   theme,
   THEMES,
-  handleThemeChange
+  handleThemeChange,
+  AVATARS,
+  avatarIndex,
+  handleNextAvatar,
+  handlePrevAvatar
+
 }) => {
   return (
     <article className={`modal ${isOpen && 'is-open'}`}>
@@ -34,7 +39,13 @@ const Menu = ({
           handleTemperature={handleTemperature}
           lang={lang}
         />
-        <Avatars  lang={lang} theme={theme}/>
+        <Avatars
+          lang={lang} 
+          theme={theme} 
+          AVATARS={AVATARS} 
+          avatarIndex={avatarIndex} 
+          handleNextAvatar={handleNextAvatar}
+          handlePrevAvatar={handlePrevAvatar}/>
         <footer className="footer">
           <span>Created by </span>
           <a href="https://github.com/Mkremis" target="_blank">

@@ -67,17 +67,17 @@ function App() {
   green:{
     padding: '1rem',
     flexBasis: `${size.height/2}px`,
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'flex-start',
-    justifyContent: 'center',
+    // display: 'flex',
+    // flexDirection: 'column',
+    // alignItems: 'flex-start',
+    // justifyContent: 'center',
   },
   modern:{
     flexBasis: `${size.height*0.8}px`,
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'flex-start',
-    justifyContent: 'center',
+    // display: 'flex',
+    // flexDirection: 'column',
+    // alignItems: 'flex-start',
+    // justifyContent: 'center',
   },
   };
 

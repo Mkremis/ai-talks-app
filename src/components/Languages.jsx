@@ -16,6 +16,7 @@ const Languages = ({ voices, lang, handleLangChange }) => {
             name="voices"
             id="voices"
             className="voices"
+            value={lang}
             onChange={handleLangChange}
           >
             {voices.map((voice, i) => {

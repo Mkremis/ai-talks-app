@@ -43,7 +43,7 @@ function App() {
   const [voices, lang, handleLangChange, speaking, handleStopSpeak, loading] =
     useTextToSpeech(response, setResponse, setPrompt, query, setQuery);
   const [handleStart, mic] = useSpeechToText(setPrompt, setQuery, lang);
-  const [isOpen, openModal, closeModal] = useModal();
+  const [isOpen, openModal, closeModal, handleCloseModal] = useModal();
 
   const pagination = {
     clickable: true,
@@ -64,14 +64,12 @@ function App() {
   modern:{
     height:`${size.height * 0.2}px`,
   },
-green:
-{
-},
+green:{},
  }
 
  
   return (
-    <main className={`app app-${theme}`} style={{height:`${size.height}px`}}>
+    <main className={`app app-${theme}`} style={{height:`${size.height}px`}} onClick={handleCloseModal}>
       <Header isOpen={isOpen} openModal={openModal} closeModal={closeModal} />
       <Menu
         isOpen={isOpen}

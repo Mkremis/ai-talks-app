@@ -17,7 +17,6 @@ speaking
         className="avatar"
         src={currentAvatar}
         alt="Talking face"
-        style={{ width: '100%', height:'auto'}}
         onClick={handleStopSpeak}
       />
     </Box>

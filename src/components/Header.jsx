@@ -8,22 +8,14 @@ const Header = ({ isOpen, openModal, closeModal }) => {
         position: "relative",
         fontFamily: "Rubik Dirt, cursive",
         fontSize: "2rem",
-        flex: "0 0 5%",
+        flex: "0 0 10%",
         width: "100%",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
       }}
     >
-      <div
-        style={{
-          flex: "0 0 10%",
-          height: "100%",
-          textAlign: "left",
-          paddingLeft: "1rem",
-          paddingBottom: "auto",
-        }}
-      >
+      <div>
         <span
           className="material-symbols-outlined"
           onClick={handleMenu}

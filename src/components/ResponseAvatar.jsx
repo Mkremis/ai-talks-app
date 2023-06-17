@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Box from "./Box";
 
 const ResponseAvatar = ({
@@ -8,24 +8,19 @@ const ResponseAvatar = ({
   AVATARS,
   avatarIndex,
 }) => {
-  const noTalking = `/${AVATARS[theme][avatarIndex]}-no_talking.png`;
-  const talking = `/${AVATARS[theme][avatarIndex]}-talking.gif`;
-  const [avatarNoTalking, setAvatarNoTalking] = useState(noTalking);
-  const [avatarTalking, setAvatarTalking] = useState(talking);
-
   return (
     <Box text={false} theme={theme}>
       {speaking ? (
         <img
           className="avatar"
-          src={avatarTalking}
+          src={`/${AVATARS[theme][avatarIndex]}-talking.gif`}
           alt="AI talking"
           onClick={handleStopSpeak}
         />
       ) : (
         <img
           className="avatar"
-          src={avatarNoTalking}
+          src={`/${AVATARS[theme][avatarIndex]}-no_talking.png`}
           alt="AI not talking"
           onClick={handleStopSpeak}
         />

@@ -4,10 +4,16 @@ import Box from "./Box";
 const ResponseAvatar = ({ speaking, handleStopSpeak, theme, AVATARS, avatarIndex }) => {
   const initialAvatar = `/${AVATARS[theme][avatarIndex]}-no_talking.png`
   const [currentAvatar, setCurrentAvatar]=useState(initialAvatar)
+const [currentAvatarAnimated, setCurrentAvatarAnimated]=useState(null)
+useEffect(()=>{
+  const animated = new Image().src = `/${AVATARS[theme][avatarIndex]}-talking.gif`;
+  SetCurrentAvatar = animated;
+},[currentAvatar, SetCurrentAvatarAnimated])
 
+  
   useEffect(()=>{
 speaking
-?setCurrentAvatar(`/${AVATARS[theme][avatarIndex]}-talking.gif`)
+?setCurrentAvatar(currentAvatarAnimated)
 :setCurrentAvatar(`/${AVATARS[theme][avatarIndex]}-no_talking.png`)
   },[speaking, setCurrentAvatar, avatarIndex, theme]);
 

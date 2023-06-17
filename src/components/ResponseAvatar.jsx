@@ -11,10 +11,10 @@ speaking
 ?setCurrentAvatar(new Image().src = `/${AVATARS[theme][avatarIndex]}-talking.gif`)
 :setCurrentAvatar(new Image().src =`/${AVATARS[theme][avatarIndex]}-no_talking.png`)
   },[speaking, setCurrentAvatar, avatarIndex, theme]);
-
-  return (
+alert(currentAvatar)
+ return (
     <Box text={false} theme={theme} onClick={handleStopSpeak>
-      {currentAvatar}
+   //   {currentAvatar}
     </Box>
   );
 };

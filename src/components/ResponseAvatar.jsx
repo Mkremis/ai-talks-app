@@ -19,12 +19,12 @@ speaking
 
   return (
     <Box text={false} theme={theme}>
-      <img
+  {speaking ?currentAvatarAnimated :<img
         className="avatar"
         src={currentAvatar}
         alt="Talking face"
         onClick={handleStopSpeak}
-      />
+      />}
     </Box>
   );
 };

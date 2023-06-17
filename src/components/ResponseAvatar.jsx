@@ -8,13 +8,16 @@ const ResponseAvatar = ({ speaking, handleStopSpeak, theme, AVATARS, avatarIndex
   
   useEffect(()=>{
 speaking
-?setCurrentAvatar(new Image().src = `/${AVATARS[theme][avatarIndex]}-talking.gif`)
-:setCurrentAvatar(new Image().src =`/${AVATARS[theme][avatarIndex]}-no_talking.png`)
+?setCurrentAvatar(`/${AVATARS[theme][avatarIndex]}-talking.gif`)
+:setCurrentAvatar(`/${AVATARS[theme][avatarIndex]}-no_talking.png`)
   },[speaking, setCurrentAvatar, avatarIndex, theme]);
 
  return (
-    <Box text={false} theme={theme} onClick={handleStopSpeak>
-     <currentAvatar/>
+    <Box text={false} theme={theme}>
+     <img 
+       src= {currentAvatar} 
+       onClick={handleStopSpeak}
+         />
       </Box>
     </Box>
   );
